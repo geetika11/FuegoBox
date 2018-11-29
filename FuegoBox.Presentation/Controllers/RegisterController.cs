@@ -17,19 +17,7 @@ namespace FuegoBox.Presentation.Controllers
         }
 
 
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
-        {
-               return RedirectToAction("Index", "Home");
-                
-               
-            
-
-            // If we got this far, something failed, redisplay form
-           
-        }
+       
 
 
 

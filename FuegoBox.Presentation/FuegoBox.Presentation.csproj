@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=8.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.8.0.0\lib\net461\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -57,6 +60,9 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -162,8 +168,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -214,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -230,6 +235,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FuegoBox.Business\FuegoBox.Business.csproj">
+      <Project>{286ebcaf-5d90-4187-9b23-9fcff18289d2}</Project>
+      <Name>FuegoBox.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FuegoBox.DAL\FuegoBox.DAL.csproj">
+      <Project>{2b1dabcc-5ff5-4bc8-971f-d3c5f02ad0c6}</Project>
+      <Name>FuegoBox.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FuegoBox.Shared\FuegoBox.Shared.csproj">
+      <Project>{d27dfefd-e2ea-4e94-baa7-3acbe675072f}</Project>
+      <Name>FuegoBox.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
