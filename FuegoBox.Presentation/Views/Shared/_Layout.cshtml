@@ -13,9 +13,21 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                    <li>@Html.ActionLink("Register", "Index", "Register")</li>
-                   <li> <input type="text" placeholder="search" /></li>
+                    @if (Session["UserID"] != null)
+                    {
+
+                      
+                        <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        <li><h4 style="color:white">@Session["name"]</h4></li>
+
+                    }
+
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                        <li>@Html.ActionLink("Register", "Index", "Register")</li>
+                    }
+                    <li> <input type="text" placeholder="search" /></li>
                 </ul>
             </div>
             <div class="navbar-collapse collapse">

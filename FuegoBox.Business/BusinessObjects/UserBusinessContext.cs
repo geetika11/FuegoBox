@@ -47,6 +47,27 @@ namespace FuegoBox.Business.BusinessObjects
 
             return null;
         }
+
+        public UserBasicDTO LoginUser(UserLoginDTO userLoginDTO)
+        {
+            try
+            {
+                if (UserDBObject.UserExists(userLoginDTO))
+                {
+                    UserBasicDTO newUserBasicDTO = UserDBObject.GetUser(userLoginDTO);
+                    if (PasswordHasher.VerifyPassword(userLoginDTO.Password, newUserBasicDTO.HashPassword))
+                    {
+                        return newUserBasicDTO;
+                    }
+                }
+                throw new InvalidLoginException();
+            }
+            catch (NotFoundException ex)
+            {
+                throw new InvalidLoginException();
+            }
+            
+        }
     }
 
 }

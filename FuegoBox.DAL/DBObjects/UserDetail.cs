@@ -37,7 +37,19 @@ namespace FuegoBox.DAL.DBObjects
 
         }
 
-
+        public bool UserExists(UserLoginDTO userLoginDTO)
+        {
+            User user = dbContext.User.Where(a => a.Email == userLoginDTO.Email).FirstOrDefault();
+            if (user != null) {
+                return true;
+            }
+            else
+            {
+                throw new NotFoundException();
+            }
+       
+           
+        }
 
         public bool UserEmailExists(string Email)
         {
@@ -51,6 +63,21 @@ namespace FuegoBox.DAL.DBObjects
                 throw new NotFoundException();
             }
         }
+
+        public UserBasicDTO GetUser(UserLoginDTO userLoginDTO)
+        {
+            User user= dbContext.User.Where(a => a.Email == userLoginDTO.Email).FirstOrDefault();
+            if (user != null)
+            {
+                UserBasicDTO newuserBasicDTO = userUserBasicDTOMapper.Map<User, UserBasicDTO>(user);
+                return newuserBasicDTO;
+            }
+            else
+            {
+                throw new NotFoundException();
+            }
+        }
+
 
         public UserBasicDTO AddUser(UserRegisterDTO userRegisterDTO)
         {

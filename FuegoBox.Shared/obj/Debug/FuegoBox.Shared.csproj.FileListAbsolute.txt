@@ -9,3 +9,4 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBo
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CopyComplete
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.dll
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.pdb
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
