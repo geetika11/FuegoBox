@@ -20,8 +20,8 @@ namespace FuegoBox.DAL
             this.Variants = new HashSet<Variant>();
         }
     
-        public int ID { get; set; }
-        public int CategoryID { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid CategoryID { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public Nullable<int> OrderLimit { get; set; }

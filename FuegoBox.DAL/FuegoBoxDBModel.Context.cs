@@ -13,10 +13,10 @@ namespace FuegoBox.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FuegoEntities : DbContext
+    public partial class FuegoEntities1 : DbContext
     {
-        public FuegoEntities()
-            : base("name=FuegoEntities")
+        public FuegoEntities1()
+            : base("name=FuegoEntities1")
         {
         }
     
@@ -25,19 +25,20 @@ namespace FuegoBox.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Address> Addresses { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
-        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<Property> Properties { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Address> Address { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderProduct> OrderProduct { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<Property> Property { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Status> Status { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Value> Values { get; set; }
-        public virtual DbSet<Variant> Variants { get; set; }
-        public virtual DbSet<VariantImage> VariantImages { get; set; }
-        public virtual DbSet<VariantPropertyValue> VariantPropertyValues { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<Value> Value { get; set; }
+        public virtual DbSet<Variant> Variant { get; set; }
+        public virtual DbSet<VariantImage> VariantImage { get; set; }
+        public virtual DbSet<VariantProperty> VariantProperty { get; set; }
+        public virtual DbSet<VariantPropertyValue> VariantPropertyValue { get; set; }
     }
 }

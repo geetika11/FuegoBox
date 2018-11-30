@@ -20,11 +20,11 @@ namespace FuegoBox.DAL
             this.Carts = new HashSet<Cart>();
             this.OrderProducts = new HashSet<OrderProduct>();
             this.VariantImages = new HashSet<VariantImage>();
-            this.VariantPropertyValues = new HashSet<VariantPropertyValue>();
+            this.VariantProperties = new HashSet<VariantProperty>();
         }
     
-        public int ID { get; set; }
-        public int ProductID { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid ProductID { get; set; }
         public double ListingPrice { get; set; }
         public double Discount { get; set; }
         public int QuantitySold { get; set; }
@@ -38,6 +38,6 @@ namespace FuegoBox.DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VariantImage> VariantImages { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<VariantPropertyValue> VariantPropertyValues { get; set; }
+        public virtual ICollection<VariantProperty> VariantProperties { get; set; }
     }
 }

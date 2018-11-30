@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="AddressLine1" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="AddressLine2" Type="nvarchar" MaxLength="100" />
           <Property Name="Pin" Type="int" Nullable="false" />
@@ -21,8 +21,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VariantID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VariantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="SellingPrice" Type="float" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
         </EntityType>
@@ -30,7 +30,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductsSold" Type="int" Nullable="false" />
         </EntityType>
@@ -38,22 +38,22 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrderDate" Type="smalldatetime" Nullable="false" />
           <Property Name="TotalAmount" Type="float" Nullable="false" />
-          <Property Name="DeliveryAddressID" Type="int" Nullable="false" />
+          <Property Name="DeliveryAddressID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="DeliveryDate" Type="smalldatetime" Nullable="false" />
-          <Property Name="StatusID" Type="int" Nullable="false" />
+          <Property Name="StatusID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="isCancelled" Type="char" MaxLength="2" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderProduct">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderID" Type="int" Nullable="false" />
-          <Property Name="VariantID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VariantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="SellingPrice" Type="float" Nullable="false" />
           <Property Name="Qty" Type="int" Nullable="false" />
         </EntityType>
@@ -61,8 +61,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CategoryID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Title" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="OrderLimit" Type="int" />
@@ -72,55 +72,54 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Role">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="description" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="HashPassword" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="PhoneNumber" Type="int" Nullable="false" />
-          <Property Name="RoleID" Type="int" Nullable="false" />
-          <Property Name="DefaultAddressID" Type="int" />
+          <Property Name="RoleID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="UserAddress">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="UserID" Type="int" Nullable="false" />
-          <Property Name="AddressID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="Value">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Variant">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ListingPrice" Type="float" Nullable="false" />
           <Property Name="Discount" Type="float" Nullable="false" />
           <Property Name="QuantitySold" Type="int" Nullable="false" />
@@ -130,27 +129,25 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="VariantID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VariantID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ImageURL" Type="varchar" MaxLength="200" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="VariantProperty">
           <Key>
-            <PropertyRef Name="VariantID" />
-            <PropertyRef Name="PropertyValueID" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="VariantID" Type="int" Nullable="false" />
-          <Property Name="PropertyValueID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VariantID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyValueID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <EntityType Name="VariantPropertyValue">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="PropertyID" Type="int" Nullable="false" />
-          <Property Name="ValueID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PropertyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ValueID" Type="uniqueidentifier" Nullable="false" />
         </EntityType>
         <Association Name="FK_CartVariant">
           <End Role="Variant" Type="Self.Variant" Multiplicity="1" />
@@ -212,7 +209,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product">
+        <Association Name="FK_Product_CategoryID">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -284,7 +281,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VariantId">
+        <Association Name="FK_VariantImage">
           <End Role="Variant" Type="Self.Variant" Multiplicity="1" />
           <End Role="VariantImage" Type="Self.VariantImage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -359,13 +356,8 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <EntitySet Name="Value" EntityType="Self.Value" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Variant" EntityType="Self.Variant" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VariantImage" EntityType="Self.VariantImage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VariantProperty" EntityType="Self.VariantProperty" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="VariantPropertyValue" EntityType="Self.VariantPropertyValue" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="VariantProperty" EntityType="Self.VariantProperty" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [VariantProperty].[VariantID] AS [VariantID], 
-    [VariantProperty].[PropertyValueID] AS [PropertyValueID]
-    FROM [dbo].[VariantProperty] AS [VariantProperty]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_CartVariant" Association="Self.FK_CartVariant">
             <End Role="Variant" EntitySet="Variant" />
             <End Role="Cart" EntitySet="Cart" />
@@ -386,7 +378,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             <End Role="User" EntitySet="User" />
             <End Role="Order" EntitySet="Order" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product" Association="Self.FK_Product">
+          <AssociationSet Name="FK_Product_CategoryID" Association="Self.FK_Product_CategoryID">
             <End Role="Category" EntitySet="Category" />
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
@@ -410,7 +402,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             <End Role="Product" EntitySet="Product" />
             <End Role="Variant" EntitySet="Variant" />
           </AssociationSet>
-          <AssociationSet Name="FK_VariantId" Association="Self.FK_VariantId">
+          <AssociationSet Name="FK_VariantImage" Association="Self.FK_VariantImage">
             <End Role="Variant" EntitySet="Variant" />
             <End Role="VariantImage" EntitySet="VariantImage" />
           </AssociationSet>
@@ -440,7 +432,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="AddressLine1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressLine2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="Pin" Type="Int32" Nullable="false" />
@@ -454,8 +446,8 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VariantID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="VariantID" Type="Guid" Nullable="false" />
           <Property Name="SellingPrice" Type="Double" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Variant" Relationship="Self.FK_CartVariant" FromRole="Cart" ToRole="Variant" />
@@ -464,22 +456,22 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ProductsSold" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Product" FromRole="Category" ToRole="Product" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Product_CategoryID" FromRole="Category" ToRole="Product" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="UserID" Type="Guid" Nullable="false" />
           <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="TotalAmount" Type="Double" Nullable="false" />
-          <Property Name="DeliveryAddressID" Type="Int32" Nullable="false" />
+          <Property Name="DeliveryAddressID" Type="Guid" Nullable="false" />
           <Property Name="DeliveryDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="StatusID" Type="Int32" Nullable="false" />
+          <Property Name="StatusID" Type="Guid" Nullable="false" />
           <Property Name="isCancelled" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_OrderAddressID" FromRole="Order" ToRole="Address" />
           <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProductOrderID" FromRole="Order" ToRole="OrderProduct" />
@@ -490,9 +482,9 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderID" Type="Int32" Nullable="false" />
-          <Property Name="VariantID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="OrderID" Type="Guid" Nullable="false" />
+          <Property Name="VariantID" Type="Guid" Nullable="false" />
           <Property Name="SellingPrice" Type="Double" Nullable="false" />
           <Property Name="Qty" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_OrderProductOrderID" FromRole="OrderProduct" ToRole="Order" />
@@ -502,20 +494,20 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="CategoryID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Title" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="OrderLimit" Type="Int32" />
           <Property Name="Description" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Product" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Product_CategoryID" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="Variants" Relationship="Self.FK_Variant" FromRole="Product" ToRole="Variant" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="VariantPropertyValues" Relationship="Self.FK_VariantPropertyValue_PropertyID" FromRole="Property" ToRole="VariantPropertyValue" />
         </EntityType>
@@ -523,7 +515,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Users" Relationship="Self.FK_User" FromRole="Role" ToRole="User" />
         </EntityType>
@@ -531,7 +523,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_statusID" FromRole="Status" ToRole="Order" />
         </EntityType>
@@ -539,13 +531,12 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HashPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="PhoneNumber" Type="Int32" Nullable="false" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="DefaultAddressID" Type="Int32" />
+          <Property Name="RoleID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_OrderUser" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Address" Relationship="Self.UserAddress" FromRole="User" ToRole="Address" />
@@ -554,7 +545,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="VariantPropertyValues" Relationship="Self.FK_VariantPropertyValue_ValueID" FromRole="Value" ToRole="VariantPropertyValue" />
         </EntityType>
@@ -562,8 +553,8 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="ProductID" Type="Guid" Nullable="false" />
           <Property Name="ListingPrice" Type="Double" Nullable="false" />
           <Property Name="Discount" Type="Double" Nullable="false" />
           <Property Name="QuantitySold" Type="Int32" Nullable="false" />
@@ -571,28 +562,38 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <NavigationProperty Name="Carts" Relationship="Self.FK_CartVariant" FromRole="Variant" ToRole="Cart" />
           <NavigationProperty Name="OrderProducts" Relationship="Self.FK_OrderProductVariant" FromRole="Variant" ToRole="OrderProduct" />
           <NavigationProperty Name="Product" Relationship="Self.FK_Variant" FromRole="Variant" ToRole="Product" />
-          <NavigationProperty Name="VariantImages" Relationship="Self.FK_VariantId" FromRole="Variant" ToRole="VariantImage" />
-          <NavigationProperty Name="VariantPropertyValues" Relationship="Self.VariantProperty" FromRole="Variant" ToRole="VariantPropertyValue" />
+          <NavigationProperty Name="VariantImages" Relationship="Self.FK_VariantImage" FromRole="Variant" ToRole="VariantImage" />
+          <NavigationProperty Name="VariantProperties" Relationship="Self.FK_VariantProperty_VariantID" FromRole="Variant" ToRole="VariantProperty" />
         </EntityType>
         <EntityType Name="VariantImage">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="VariantID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="VariantID" Type="Guid" Nullable="false" />
           <Property Name="ImageURL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Variant" Relationship="Self.FK_VariantId" FromRole="VariantImage" ToRole="Variant" />
+          <NavigationProperty Name="Variant" Relationship="Self.FK_VariantImage" FromRole="VariantImage" ToRole="Variant" />
+        </EntityType>
+        <EntityType Name="VariantProperty">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="VariantID" Type="Guid" Nullable="false" />
+          <Property Name="PropertyValueID" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Variant" Relationship="Self.FK_VariantProperty_VariantID" FromRole="VariantProperty" ToRole="Variant" />
+          <NavigationProperty Name="VariantPropertyValue" Relationship="Self.FK_VariantProperty_PropertyValueID" FromRole="VariantProperty" ToRole="VariantPropertyValue" />
         </EntityType>
         <EntityType Name="VariantPropertyValue">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PropertyID" Type="Int32" Nullable="false" />
-          <Property Name="ValueID" Type="Int32" Nullable="false" />
+          <Property Name="ID" Type="Guid" Nullable="false" />
+          <Property Name="PropertyID" Type="Guid" Nullable="false" />
+          <Property Name="ValueID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="Property" Relationship="Self.FK_VariantPropertyValue_PropertyID" FromRole="VariantPropertyValue" ToRole="Property" />
           <NavigationProperty Name="Value" Relationship="Self.FK_VariantPropertyValue_ValueID" FromRole="VariantPropertyValue" ToRole="Value" />
-          <NavigationProperty Name="Variants" Relationship="Self.VariantProperty" FromRole="VariantPropertyValue" ToRole="Variant" />
+          <NavigationProperty Name="VariantProperties" Relationship="Self.FK_VariantProperty_PropertyValueID" FromRole="VariantPropertyValue" ToRole="VariantProperty" />
         </EntityType>
         <Association Name="FK_OrderAddressID">
           <End Role="Address" Type="Self.Address" Multiplicity="1" />
@@ -618,7 +619,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Product">
+        <Association Name="FK_Product_CategoryID">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
           <ReferentialConstraint>
@@ -726,7 +727,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_VariantId">
+        <Association Name="FK_VariantImage">
           <End Role="Variant" Type="Self.Variant" Multiplicity="1" />
           <End Role="VariantImage" Type="Self.VariantImage" Multiplicity="*" />
           <ReferentialConstraint>
@@ -738,15 +739,35 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_VariantProperty_VariantID">
+          <End Role="Variant" Type="Self.Variant" Multiplicity="1" />
+          <End Role="VariantProperty" Type="Self.VariantProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Variant">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VariantProperty">
+              <PropertyRef Name="VariantID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VariantProperty_PropertyValueID">
+          <End Role="VariantPropertyValue" Type="Self.VariantPropertyValue" Multiplicity="1" />
+          <End Role="VariantProperty" Type="Self.VariantProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VariantPropertyValue">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="VariantProperty">
+              <PropertyRef Name="PropertyValueID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="UserAddress">
           <End Role="Address" Type="Self.Address" Multiplicity="0..1" />
           <End Role="User" Type="Self.User" Multiplicity="*" />
         </Association>
-        <Association Name="VariantProperty">
-          <End Role="VariantPropertyValue" Type="Self.VariantPropertyValue" Multiplicity="*" />
-          <End Role="Variant" Type="Self.Variant" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="FuegoEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FuegoEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="Carts" EntityType="Self.Cart" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
@@ -760,6 +781,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
           <EntitySet Name="Values" EntityType="Self.Value" />
           <EntitySet Name="Variants" EntityType="Self.Variant" />
           <EntitySet Name="VariantImages" EntityType="Self.VariantImage" />
+          <EntitySet Name="VariantProperties" EntityType="Self.VariantProperty" />
           <EntitySet Name="VariantPropertyValues" EntityType="Self.VariantPropertyValue" />
           <AssociationSet Name="FK_OrderAddressID" Association="Self.FK_OrderAddressID">
             <End Role="Address" EntitySet="Addresses" />
@@ -769,7 +791,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             <End Role="Variant" EntitySet="Variants" />
             <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Product" Association="Self.FK_Product">
+          <AssociationSet Name="FK_Product_CategoryID" Association="Self.FK_Product_CategoryID">
             <End Role="Category" EntitySet="Categories" />
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
@@ -805,17 +827,21 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             <End Role="Value" EntitySet="Values" />
             <End Role="VariantPropertyValue" EntitySet="VariantPropertyValues" />
           </AssociationSet>
-          <AssociationSet Name="FK_VariantId" Association="Self.FK_VariantId">
+          <AssociationSet Name="FK_VariantImage" Association="Self.FK_VariantImage">
             <End Role="Variant" EntitySet="Variants" />
             <End Role="VariantImage" EntitySet="VariantImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariantProperty_VariantID" Association="Self.FK_VariantProperty_VariantID">
+            <End Role="Variant" EntitySet="Variants" />
+            <End Role="VariantProperty" EntitySet="VariantProperties" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VariantProperty_PropertyValueID" Association="Self.FK_VariantProperty_PropertyValueID">
+            <End Role="VariantPropertyValue" EntitySet="VariantPropertyValues" />
+            <End Role="VariantProperty" EntitySet="VariantProperties" />
           </AssociationSet>
           <AssociationSet Name="UserAddress" Association="Self.UserAddress">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="User" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="VariantProperty" Association="Self.VariantProperty">
-            <End Role="VariantPropertyValue" EntitySet="VariantPropertyValues" />
-            <End Role="Variant" EntitySet="Variants" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -823,7 +849,7 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FuegoModelStoreContainer" CdmEntityContainer="FuegoEntities">
+        <EntityContainerMapping StorageEntityContainer="FuegoModelStoreContainer" CdmEntityContainer="FuegoEntities1">
           <EntitySetMapping Name="Addresses">
             <EntityTypeMapping TypeName="FuegoModel.Address">
               <MappingFragment StoreEntitySet="Address">
@@ -926,7 +952,6 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="DefaultAddressID" ColumnName="DefaultAddressID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -959,6 +984,15 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="VariantProperties">
+            <EntityTypeMapping TypeName="FuegoModel.VariantProperty">
+              <MappingFragment StoreEntitySet="VariantProperty">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="VariantID" ColumnName="VariantID" />
+                <ScalarProperty Name="PropertyValueID" ColumnName="PropertyValueID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="VariantPropertyValues">
             <EntityTypeMapping TypeName="FuegoModel.VariantPropertyValue">
               <MappingFragment StoreEntitySet="VariantPropertyValue">
@@ -974,14 +1008,6 @@ warning 6002: The table/view 'Fuego.dbo.VariantProperty' does not have a primary
             </EndProperty>
             <EndProperty Name="User">
               <ScalarProperty Name="ID" ColumnName="UserID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="VariantProperty" TypeName="FuegoModel.VariantProperty" StoreEntitySet="VariantProperty">
-            <EndProperty Name="VariantPropertyValue">
-              <ScalarProperty Name="ID" ColumnName="PropertyValueID" />
-            </EndProperty>
-            <EndProperty Name="Variant">
-              <ScalarProperty Name="ID" ColumnName="VariantID" />
             </EndProperty>
           </AssociationSetMapping>
         </EntityContainerMapping>

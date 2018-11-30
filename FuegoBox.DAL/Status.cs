@@ -20,7 +20,7 @@ namespace FuegoBox.DAL
             this.Orders = new HashSet<Order>();
         }
     
-        public int ID { get; set; }
+        public System.Guid ID { get; set; }
         public string description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

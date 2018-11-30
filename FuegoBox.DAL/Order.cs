@@ -20,13 +20,13 @@ namespace FuegoBox.DAL
             this.OrderProducts = new HashSet<OrderProduct>();
         }
     
-        public int ID { get; set; }
-        public int UserID { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid UserID { get; set; }
         public System.DateTime OrderDate { get; set; }
         public double TotalAmount { get; set; }
-        public int DeliveryAddressID { get; set; }
+        public System.Guid DeliveryAddressID { get; set; }
         public System.DateTime DeliveryDate { get; set; }
-        public int StatusID { get; set; }
+        public System.Guid StatusID { get; set; }
         public string isCancelled { get; set; }
     
         public virtual Address Address { get; set; }

@@ -14,8 +14,8 @@ namespace FuegoBox.DAL
     
     public partial class Cart
     {
-        public int ID { get; set; }
-        public int VariantID { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid VariantID { get; set; }
         public double SellingPrice { get; set; }
         public int Qty { get; set; }
     

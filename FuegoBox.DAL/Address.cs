@@ -21,7 +21,7 @@ namespace FuegoBox.DAL
             this.Users = new HashSet<User>();
         }
     
-        public int ID { get; set; }
+        public System.Guid ID { get; set; }
         public string AddressLine1 { get; set; }
         public string AddressLine2 { get; set; }
         public int Pin { get; set; }

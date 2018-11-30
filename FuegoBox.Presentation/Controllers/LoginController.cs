@@ -13,5 +13,11 @@ namespace FuegoBox.Presentation.Controllers
         {
             return View();
         }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login()
+        {
+            return View();
+        }
     }
 }

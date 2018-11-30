@@ -20,7 +20,7 @@ namespace FuegoBox.DAL
             this.Products = new HashSet<Product>();
         }
     
-        public int ID { get; set; }
+        public System.Guid ID { get; set; }
         public string Name { get; set; }
         public int ProductsSold { get; set; }
     
