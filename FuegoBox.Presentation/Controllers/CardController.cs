@@ -1,5 +1,7 @@
 ﻿using AutoMapper;
 using FuegoBox.Business.BusinessObjects;
+using FuegoBox.DAL;
+using FuegoBox.DAL.DBObjects;
 using FuegoBox.Presentation.Models;
 using FuegoBox.Shared.DTO.Product;
 using System;
@@ -17,13 +19,14 @@ namespace FuegoBox.Presentation.Controllers
         IMapper productmapper, cardMapper;
        
         ProductDetailContext productDetailContext;
+        ProductDetailDB pdb;
      
         public CardController()
         {
 
             productDetailContext = new ProductDetailContext();
-           
 
+            pdb = new ProductDetailDB();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ProductDetail, ProductDetailDTO>();
             });
@@ -47,6 +50,14 @@ namespace FuegoBox.Presentation.Controllers
 
           
         }
+
+        //public ActionResult CardDetail()
+        //{
+        //    List<Cart> abc= pdb.GetCardItems();
+        //    return View();
+
+           
+        //}
         
     }
 }

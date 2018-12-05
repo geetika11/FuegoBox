@@ -78,5 +78,14 @@ namespace FuegoBox.DAL.DBObjects
            
         }
 
+        //public List<Cart> GetCardItems()
+        //{
+            
+        //  return dbContext.Cart.ToList();
+           
+            
+        //}
+        
+
     }
 }
