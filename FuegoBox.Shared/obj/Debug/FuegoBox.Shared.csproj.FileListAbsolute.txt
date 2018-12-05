@@ -14,3 +14,4 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityF
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.xml
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
