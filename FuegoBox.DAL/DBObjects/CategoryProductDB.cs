@@ -23,16 +23,8 @@ namespace FuegoBox.DAL.DBObjects
             {
                 cfg.CreateMap<Product, ProductDetailDTO>();
             });
-
-            var conf = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Category, CategoryDTO>();
-            });
-
-
-
-            P_DTOmapper = new Mapper(config);
-            c_Mapper = new Mapper(conf);
+             P_DTOmapper = new Mapper(config);
+           
 
         }
         public CategoryDTO Getproduct(string catName)
@@ -46,7 +38,7 @@ namespace FuegoBox.DAL.DBObjects
 
              ProductDetailDTO p = new ProductDetailDTO();
            
-         var product = dbContext.Product.Where(a => a.CategoryID == idvalue).Include(pa => pa.Variant));
+         IEnumerable<Product> product = dbContext.Product.Where(a => a.CategoryID == idvalue).Include(pa => pa.Variant);
 
             //for (var i = 0; i < product.Count(); i++)
             //{

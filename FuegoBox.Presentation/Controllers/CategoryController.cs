@@ -52,9 +52,9 @@ namespace FuegoBox.Presentation.Controllers
             return View(categorymodel);
 
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Book([Bind(Include = "Name")] ProductDetail productDetail)
+       
+       
+        public ActionResult PDetail([Bind(Include = "Name")] ProductDetail productDetail)
         {
             try
             {
