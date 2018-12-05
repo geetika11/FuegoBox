@@ -7,7 +7,8 @@ using System.Web;
 namespace FuegoBox.Presentation.Models
 {
     public class RegisterModel
-    {   [Required]
+    {
+        [Required]
         [EmailAddress]
 
         public string Email { get; set; }

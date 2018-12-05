@@ -8,7 +8,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{88F94FCA-2EBD-4496-B9C4-E668E6E31A6B}</ProjectGuid>
+    <ProjectGuid>{8CE16B23-E35D-4333-8096-4B6C9D5791B8}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -58,8 +58,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
     </Reference>
@@ -168,7 +166,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CategoryModel.cs" />
+    <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
+    <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,7 +178,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\icon.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -210,14 +210,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Category\Book.cshtml" />
+    <Content Include="Views\Category\Clothing.cshtml" />
+    <Content Include="Views\Category\Footwear.cshtml" />
+    <Content Include="Views\Category\Mobile.cshtml" />
+    <Content Include="Views\Category\Television.cshtml" />
+    <Content Include="Views\Category\Watches.cshtml" />
+    <Content Include="Views\Category\SearchResult.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
-    <Content Include="Views\Category\Books.cshtml" />
-    <Content Include="Views\Category\Watches.cshtml" />
-    <Content Include="Views\Category\Clothing.cshtml" />
-    <Content Include="Views\Category\Television.cshtml" />
-    <Content Include="Views\Category\Mobile.cshtml" />
-    <Content Include="Views\Category\Footwear.cshtml" />
     <Content Include="Views\Register\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -237,9 +238,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\FuegoBox.Business\FuegoBox.Business.csproj">
       <Project>{286ebcaf-5d90-4187-9b23-9fcff18289d2}</Project>
       <Name>FuegoBox.Business</Name>
@@ -249,7 +247,7 @@
       <Name>FuegoBox.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\FuegoBox.Shared\FuegoBox.Shared.csproj">
-      <Project>{d27dfefd-e2ea-4e94-baa7-3acbe675072f}</Project>
+      <Project>{1f559420-8913-40c6-be03-cc354c7c2974}</Project>
       <Name>FuegoBox.Shared</Name>
     </ProjectReference>
   </ItemGroup>
@@ -269,7 +267,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52123</DevelopmentServerPort>
+          <DevelopmentServerPort>50267</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:8080/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

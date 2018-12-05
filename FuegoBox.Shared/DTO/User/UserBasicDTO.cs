@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FuegoBox.Shared.DTO.User
 {
-   public class UserBasicDTO
+    public class UserBasicDTO
     {
         public System.Guid ID { get; set; }
         public string Name { get; set; }

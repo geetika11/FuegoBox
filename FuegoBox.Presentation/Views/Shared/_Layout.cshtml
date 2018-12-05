@@ -11,8 +11,8 @@
 <body background="~/Content/background.jpg">
     <div style="height:30px">
         <nav class="navbar navbar-fixed-top" style="height:80px;background-color:gainsboro">
-           
-            <form class="navbar-form navbar-left " action="/action_page.php">
+
+            <form class="navbar-form navbar-left " method="post">
                 <h2>Fuego Box</h2>
                 <div class="input-group" style="margin-left:200px;margin-top:-80px">
                     <input type="text" class="form-control" placeholder="Search" style="width:300px">
@@ -29,11 +29,11 @@
                 <ul class="nav navbar-nav navbar-right" style="margin-top:20px">
 
 
-                    <li ><span class="glyphicon glyphicon-heart"></span>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li><span class="glyphicon glyphicon-heart"></span>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (Session["UserID"] != null)
                     {
-                        <li style="font-size:25px">@Html.ActionLink("Logout", "Logout", "Login")</li>
-                        <li style=" font-size:25px"><h4 style="color:white">@Session["name"]</h4></li>
+                        <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                        <li><h4 style="color:white">@Session["name"]</h4></li>
                     }
                     else
                     {
@@ -48,7 +48,7 @@
         </nav>
 
     </div>
-    <div  style="height:100px;background-color:whitesmoke">
+    <div style="height:100px;background-color:whitesmoke">
         <div class=" navbar-collapse collapse navbar-right" style="margin-top:25px">
             <div class="icon-cart" style="float:left">
                 <div class="cart-line-1"></div>
@@ -56,10 +56,10 @@
                 <div class="cart-line-3"></div>
                 <div class="cart-wheel"></div>
             </div>
-            <button  class="btn btn-primary active"style="margin-right:10px">add to cart</button>
+            <button class="btn btn-primary active" style="margin-right:10px">add to cart</button>
         </div>
 
-        
+
 
         <ul class="nav navbar-nav" style="height:80px;font-size:20px;">
 
@@ -76,9 +76,7 @@
     <div class="container body-content" style="height:80px">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now - My Fuego Site</p>
-        </footer>
+
     </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

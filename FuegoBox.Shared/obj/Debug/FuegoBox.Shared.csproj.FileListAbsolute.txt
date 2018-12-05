@@ -9,4 +9,8 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBo
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CopyComplete
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.dll
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.pdb
-C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\FuegoBox.Shared.dll.config
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.dll
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.xml
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.xml

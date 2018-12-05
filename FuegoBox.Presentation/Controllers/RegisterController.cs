@@ -20,7 +20,7 @@ namespace FuegoBox.Presentation.Controllers
 
             userBusinessContext = new UserBusinessContext();
 
-            var config = new MapperConfiguration(cfg =>{
+            var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<RegisterModel, UserRegisterDTO>();
             });
 
@@ -33,7 +33,7 @@ namespace FuegoBox.Presentation.Controllers
         {
             return View();
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Name, Email, Password, PhoneNumber")] RegisterModel registerModel)
@@ -44,19 +44,19 @@ namespace FuegoBox.Presentation.Controllers
                 if (ModelState.IsValid)
                 {
                     UserRegisterDTO userRegisterDTO = RegistrationVMMapper.Map<RegisterModel, UserRegisterDTO>(registerModel);
-                    UserBasicDTO userBasicDTO = userBusinessContext.RegisterUser(userRegisterDTO);    
-                  return View("Success");
+                    UserBasicDTO userBasicDTO = userBusinessContext.RegisterUser(userRegisterDTO);
+                    return View("Success");
                 }
                 else
                 {
                     return View(registerModel);
                 }
             }
-           
+
             catch (Exception ex)
             {
 
-                ModelState.AddModelError("",ex+":Exception occured");
+                ModelState.AddModelError("", ex + ":Exception occured");
             }
             return View("Error");
         }

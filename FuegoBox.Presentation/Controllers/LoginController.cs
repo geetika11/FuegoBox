@@ -43,7 +43,7 @@ namespace FuegoBox.Presentation.Controllers
                     Session["UserID"] = loggedInUserDTO.ID;
                     Session["name"] = loggedInUserDTO.Name;
                     ViewBag.MSG = loggedInUserDTO.ID;
-                   // if (Request.UrlReferrer.ToString() == "a") { return null; }
+                    // if (Request.UrlReferrer.ToString() == "a") { return null; }
                     return RedirectToAction("Index", "Home");
                 }
                 catch (InvalidLoginException ex)
@@ -59,12 +59,12 @@ namespace FuegoBox.Presentation.Controllers
                 }
             }
             return View(loginModel);
-        
+
         }
         public ActionResult Logout()
         {
             Session.Clear();
-           return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home");
 
         }
     }

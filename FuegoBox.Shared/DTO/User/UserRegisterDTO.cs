@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FuegoBox.Shared.DTO.User
 {
-  public class UserRegisterDTO
+    public class UserRegisterDTO
     {
         public string Email { get; set; }
         public string HashPassword { get; set; }

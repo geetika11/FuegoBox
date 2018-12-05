@@ -22,3 +22,7 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\BCryp
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\BCrypt.Net.xml
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\Fuego.mdf
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\Fuego_log.ldf
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\FuegoBox.Business.dll.config
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\FuegoBox.Shared.dll.config
+C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Business\bin\Debug\EntityFramework.SqlServer.xml

@@ -37,7 +37,14 @@
     <Reference Include="BCrypt.Net, Version=0.1.5073.29922, Culture=neutral, PublicKeyToken=6bcd409ee6bc9292, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt-Official.0.1.109\lib\BCrypt.Net.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
@@ -50,6 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\CategoryDetailContext.cs" />
+    <Compile Include="BusinessObjects\ProductDetailContext.cs" />
     <Compile Include="BusinessObjects\UserBusinessContext.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Exceptions\InvalidLoginException.cs" />
@@ -58,6 +67,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -66,7 +76,7 @@
       <Name>FuegoBox.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\FuegoBox.Shared\FuegoBox.Shared.csproj">
-      <Project>{D27DFEFD-E2EA-4E94-BAA7-3ACBE675072F}</Project>
+      <Project>{1f559420-8913-40c6-be03-cc354c7c2974}</Project>
       <Name>FuegoBox.Shared</Name>
     </ProjectReference>
   </ItemGroup>
