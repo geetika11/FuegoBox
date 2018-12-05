@@ -12,10 +12,8 @@ namespace FuegoBox.DAL.DBObjects
 {
    public class CategoryProductDB
     {
-
         FuegoEntities dbContext;
-
-        IMapper P_DTOmapper,c_Mapper;
+         IMapper P_DTOmapper,c_Mapper;
         public CategoryProductDB()
         {
             dbContext = new FuegoEntities();
@@ -24,20 +22,13 @@ namespace FuegoBox.DAL.DBObjects
                 cfg.CreateMap<Product, ProductDetailDTO>();
             });
              P_DTOmapper = new Mapper(config);
-           
-
         }
         public CategoryDTO Getproduct(string catName)
         {
-            
             System.Guid idvalue;
-            
-           
             Category cat = dbContext.Category.Where(c => c.Name == catName).FirstOrDefault();
             idvalue = cat.ID;
-
-             ProductDetailDTO p = new ProductDetailDTO();
-           
+             ProductDetailDTO p = new ProductDetailDTO();           
          IEnumerable<Product> product = dbContext.Product.Where(a => a.CategoryID == idvalue).Include(pa => pa.Variant);
 
             //for (var i = 0; i < product.Count(); i++)
@@ -49,18 +40,10 @@ namespace FuegoBox.DAL.DBObjects
 
             //}
             //IEnumerable<Product> product1 = dbContext.Product.Include(i => i.Variant.Select(s => s.VariantImage).Select(a=>a.ImageURL));
-          
-
-
             CategoryDTO categoryDTO = new CategoryDTO();
-            
-
             categoryDTO.Products = P_DTOmapper.Map<IEnumerable<Product>, IEnumerable<ProductDetailDTO>>(product);
             categoryDTO.Name = "Books";
             return categoryDTO;
-
-           
         }
-
     }
 }

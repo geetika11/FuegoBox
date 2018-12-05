@@ -15,5 +15,6 @@
 
 <h4><b>Discount Price:</b> @Model.Discount</h4>
 <img src="@Model.img" width="200px" height="200px" />
-<button class="btn btn-primary active">Add to cart</button>
+
+<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
 

@@ -14,7 +14,7 @@ namespace FuegoBox.DAL.DBObjects
     {
         FuegoEntities dbContext;
 
-        IMapper P_DTOmapper, v_DTOmapper;
+        IMapper P_DTOmapper, v_DTOmapper,cart_mapper;
         public ProductDetailDB()
         {
             dbContext = new FuegoEntities();
@@ -22,16 +22,18 @@ namespace FuegoBox.DAL.DBObjects
             {
                 cfg.CreateMap<Product, ProductDetailDTO>();
             });
-
-          
-
             var conf = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Variant, VariantDTO>();
             });
+            var configuration = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CardDTO, Cart>();
+            });
 
             v_DTOmapper = new Mapper(conf);
             P_DTOmapper = new Mapper(config);
+            cart_mapper = new Mapper(configuration);
         }
    public ProductDetailDTO GetDetail(ProductDetailDTO productDetailDTO)
         {
@@ -52,6 +54,28 @@ namespace FuegoBox.DAL.DBObjects
                 return newBasicDTO;
             }
             return null;
+        }
+        public CardDTO AddProduct( ProductDetailDTO pdto)
+        {
+            Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
+            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
+           // ProductDetailDTO newBasicDTO = P_DTOmapper.Map<Product, ProductDetailDTO>(product);
+            CardDTO cartdto = new CardDTO();
+            Cart cart = new Cart();
+           // Cart cart = cart_mapper.Map<CardDTO, Cart>(cartdto);
+            cart.ID = Guid.NewGuid();
+            cart.VariantID = variant.ID;
+            cart.SellingPrice = variant.Discount;
+            cart.Qty = 2;
+            cartdto.VariantID = variant.ID;
+            cartdto.SellingPrice = variant.Discount;
+          
+            dbContext.Cart.Add(cart);
+            dbContext.SaveChanges();
+            return cartdto;
+
+
+           
         }
 
     }
