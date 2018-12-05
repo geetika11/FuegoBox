@@ -3,5 +3,17 @@
     ViewBag.Title = "PDetail";
 }
 
-<h3>@Model.Name</h3>
-<h2>@Model.Description</h2>
+
+<h4><b>Name:</b> @Model.Name</h4>
+
+<h4><b>Description:</b> @Model.Description</h4>
+
+<h4><b>Category:</b> @Model.CatName</h4>
+
+<h4><b>Price:</b> @Model.ListingPrice</h4>
+
+
+<h4><b>Discount Price:</b> @Model.Discount</h4>
+<img src="@Model.img" width="200px" height="200px" />
+<button class="btn btn-primary active">Add to cart</button>
+

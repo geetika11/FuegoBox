@@ -171,6 +171,7 @@
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductDetail.cs" />
     <Compile Include="Models\RegisterModel.cs" />
+    <Compile Include="Models\VariantModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
