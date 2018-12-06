@@ -172,6 +172,7 @@
     <Compile Include="Models\ImageModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\ProductDetail.cs" />
+    <Compile Include="Models\ProductsSearchViewModel.cs" />
     <Compile Include="Models\RegisterModel.cs" />
     <Compile Include="Models\VariantModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -225,9 +226,11 @@
     <Content Include="Views\Register\Success.cshtml" />
     <Content Include="Views\Category\PDetail.cshtml" />
     <Content Include="Views\Card\CardDetail.cshtml" />
+    <Content Include="Views\Category\SearchProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

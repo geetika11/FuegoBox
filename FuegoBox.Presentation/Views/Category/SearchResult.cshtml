@@ -1,7 +1,15 @@
-﻿
+﻿@model FuegoBox.Presentation.Models.ProductDetail
+
 @{
     ViewBag.Title = "SearchResult";
 }
 
-<h2>SearchResult</h2>
+<h2>@Model.Name</h2>
+<h2>@Model.Description</h2>
+
+<h2>@Model.CatName</h2>
+
+<img src="@Model.img" />
+
+
 

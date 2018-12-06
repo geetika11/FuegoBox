@@ -13,7 +13,7 @@ namespace FuegoBox.DAL.DBObjects
    public class ProductDetailDB
     {
         FuegoEntities dbContext;
-
+        IMapper ProductSearchMapper;
         IMapper P_DTOmapper, v_DTOmapper,cart_mapper;
         public ProductDetailDB()
         {
@@ -22,6 +22,11 @@ namespace FuegoBox.DAL.DBObjects
             {
                 cfg.CreateMap<Product, ProductDetailDTO>();
             });
+            var productsSearchDTOConfig = new MapperConfiguration(cfg => {
+                cfg.CreateMap<Product, ProductDetailDTO>();
+               
+            });
+
             var conf = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Variant, VariantDTO>();
@@ -30,7 +35,7 @@ namespace FuegoBox.DAL.DBObjects
             {
                 cfg.CreateMap<CardDTO, Cart>();
             });
-
+            ProductSearchMapper = new Mapper(productsSearchDTOConfig);
             v_DTOmapper = new Mapper(conf);
             P_DTOmapper = new Mapper(config);
             cart_mapper = new Mapper(configuration);
@@ -58,34 +63,28 @@ namespace FuegoBox.DAL.DBObjects
         public CardDTO AddProduct( ProductDetailDTO pdto)
         {
             Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
-            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
-           // ProductDetailDTO newBasicDTO = P_DTOmapper.Map<Product, ProductDetailDTO>(product);
+            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();          
             CardDTO cartdto = new CardDTO();
-            Cart cart = new Cart();
-           // Cart cart = cart_mapper.Map<CardDTO, Cart>(cartdto);
+            Cart cart = new Cart();        
             cart.ID = Guid.NewGuid();
             cart.VariantID = variant.ID;
             cart.SellingPrice = variant.Discount;
             cart.Qty = 2;
             cartdto.VariantID = variant.ID;
-            cartdto.SellingPrice = variant.Discount;
-          
+            cartdto.SellingPrice = variant.Discount;          
             dbContext.Cart.Add(cart);
             dbContext.SaveChanges();
-            return cartdto;
-
-
-           
+            return cartdto;           
         }
 
         //public List<Cart> GetCardItems()
         //{
-            
+
         //  return dbContext.Cart.ToList();
-           
-            
+
+
         //}
-        
+       
 
     }
 }

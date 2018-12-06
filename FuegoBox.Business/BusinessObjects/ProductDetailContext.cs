@@ -28,6 +28,6 @@ namespace FuegoBox.Business.BusinessObjects
             CardDTO cDTO = ProductDBObject.AddProduct(productDetailDTO);
             return cDTO;
         }
-
+       
     }
 }

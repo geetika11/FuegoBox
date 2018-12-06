@@ -91,10 +91,10 @@ namespace FuegoBox.Presentation.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult SearchResult()
-        {
-            return View();
-        }
+
+       
+
+
+
     }
 }
