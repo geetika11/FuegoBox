@@ -12,7 +12,12 @@ namespace FuegoBox.Presentation
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+            routes.MapRoute(
+                name: "Admin",
+                url: "admin",
+               defaults: new { controller = "User", action = "CheckAdmin" }
 
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

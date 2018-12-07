@@ -55,7 +55,7 @@ namespace FuegoBox.DAL.DBObjects
                 newBasicDTO.ListingPrice = vdto.ListingPrice;
                 newBasicDTO.CatName=cat.Name;
                 newBasicDTO.Discount = vdto.Discount;
-                newBasicDTO.img = vi.ImageURL;
+                newBasicDTO.ImageURL = vi.ImageURL;
                 return newBasicDTO;
             }
             return null;

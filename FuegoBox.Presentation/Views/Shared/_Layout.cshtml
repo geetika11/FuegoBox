@@ -47,11 +47,11 @@
         <ul class="nav navbar-nav" style="height:80px;font-size:20px;">
 
             <li style="margin-left:20px;padding:25px"><i class="glyphicon glyphicon-book"></i>@Html.ActionLink("Book", "Book", "Category")</li>
-            <li style="padding:25px"><i class="glyphicon glyphicon-time"></i>@Html.ActionLink("Watches", "Watches", "Category")</li>
-            <li style="padding:25px"><i class="glyphicon glyphicon-briefcase"></i>@Html.ActionLink("Clothing", "Clothing", "Category")</li>
-            <li style="padding:25px"><i class="glyphicon glyphicon-off"></i>@Html.ActionLink("Television", "Television", "Category")</li>
-            <li style="padding:25px"><i class="glyphicon glyphicon-phone"></i>@Html.ActionLink("Mobile", "Mobile", "Category")</li>
-            <li style="padding:25px"><i class="glyphicon glyphicon-star"></i>@Html.ActionLink("Footwear", "Footwear", "Category")</li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Watch" })">Watches</a></li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Clothing" })">Clothing</a></li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Television" })">TV</a></li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Mobile" })">Mobile</a></li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Footwear" })">Footwear</a></li>
 
         </ul>
     </div>

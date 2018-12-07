@@ -16,7 +16,7 @@ namespace FuegoBox.Shared.DTO.Product
         public IEnumerable<VariantDTO> VariantDetail { get; set; }
         public double ListingPrice { get; set; }
         public double Discount { get; set; }
-        public string img { get; set; }
+      
         public string ImageURL { get; set; }    
     }
 }

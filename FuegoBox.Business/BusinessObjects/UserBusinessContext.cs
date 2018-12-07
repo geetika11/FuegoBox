@@ -66,7 +66,12 @@ namespace FuegoBox.Business.BusinessObjects
             {
                 throw new InvalidLoginException();
             }
+
             
+        }
+        public bool CheckAdmin(Guid UserID)
+        {
+            return UserDBObject.CheckAdmin(UserID);
         }
     }
 
