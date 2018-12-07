@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FuegoBox.DAL.DBObjects;
+using FuegoBox.Shared.DTO.Category;
 using FuegoBox.Shared.DTO.Product;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,13 @@ namespace FuegoBox.Business.BusinessObjects
             CardDTO cDTO = ProductDBObject.AddProduct(productDetailDTO);
             return cDTO;
         }
-       
+
+        public ProductSearchResultDTO GetProductwithString(string searchString)
+        {
+            ProductSearchResultDTO produDetailDTO = ProductDBObject.GetProductSearch(searchString);
+            return produDetailDTO;
+        }
+
+
     }
 }

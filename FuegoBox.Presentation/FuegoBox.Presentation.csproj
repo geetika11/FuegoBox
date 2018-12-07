@@ -216,22 +216,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Category\Book.cshtml" />
-    <Content Include="Views\Category\Clothing.cshtml" />
-    <Content Include="Views\Category\Footwear.cshtml" />
-    <Content Include="Views\Category\Mobile.cshtml" />
-    <Content Include="Views\Category\Television.cshtml" />
-    <Content Include="Views\Category\Watches.cshtml" />
     <Content Include="Views\Category\SearchResult.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Register\Index.cshtml" />
     <Content Include="Views\Register\Success.cshtml" />
     <Content Include="Views\Category\PDetail.cshtml" />
     <Content Include="Views\Card\CardDetail.cshtml" />
-    <Content Include="Views\Category\SearchProducts.cshtml" />
     <Content Include="Views\Category\ViewProductCategory.cshtml" />
     <Content Include="Views\User\Admin.cshtml" />
     <Content Include="Views\User\NotAdmin.cshtml" />
+    <Content Include="Views\Category\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

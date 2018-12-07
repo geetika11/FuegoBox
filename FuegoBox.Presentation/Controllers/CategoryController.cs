@@ -16,7 +16,7 @@ namespace FuegoBox.Presentation.Controllers
     {
         // GET: Category
         IMapper productmapper;
-        IMapper catMapper;
+        IMapper catMapper, ProductsSearchResultVMMapper;
         ProductDetailContext productDetailContext;
         CategoryDetailContext categoryDetailContext;
 
@@ -35,25 +35,51 @@ namespace FuegoBox.Presentation.Controllers
                 cfg.CreateMap<CategoryDTO, CategoryModel>();
             });
 
+            var conf1 = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<ProductSearchResultDTO, ProductsSearchViewModel>();
+            });
+
             productmapper = new Mapper(config);
             catMapper = new Mapper(conf);
-
+            ProductsSearchResultVMMapper = new Mapper(conf1);
 
         }
 
-        public ActionResult Book()
+        public ActionResult SearchResult(string searchString)
         {
-            String catName = "Books";
             
-            CategoryModel categorymodel = new CategoryModel();
-            CategoryDTO cdto = new CategoryDTO();       
-            cdto = categoryDetailContext.GetCategoryProduct(catName);
-            categorymodel = catMapper.Map<CategoryDTO, CategoryModel>(cdto);
-            return View(categorymodel);
+            if (Session["UserID"] != null)
+            {
+                ViewBag.IsLoggedIn = "True";
+            }
 
+            if (String.IsNullOrEmpty(searchString))
+            {
+               
+                return View("Search");//TODO
+            }
+            try
+            {
+                ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
+                ProductsSearchViewModel viewModel = new ProductsSearchViewModel();
+                CategoryDTO cd = new CategoryDTO();
+
+                newProductsSearchResultDTO = productDetailContext.GetProductwithString(searchString);
+                viewModel = ProductsSearchResultVMMapper.Map<ProductSearchResultDTO, ProductsSearchViewModel>(newProductsSearchResultDTO);
+                ViewBag.searchString = searchString;
+                return View(viewModel);
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError("", ex + ":Exception occured");
+            }
+            return View();
         }
-       
-       
+
+
+
         public ActionResult PDetail([Bind(Include = "Name")] ProductDetail productDetail)
         {
             try
@@ -70,27 +96,7 @@ namespace FuegoBox.Presentation.Controllers
             }
             return View();
         }
-        public ActionResult Watches()
-        {
-            return View();
-
-        }
-        public ActionResult Clothing()
-        {
-            return View();
-        }
-        public ActionResult Television()
-        {
-            return View();
-        }
-        public ActionResult Mobile()
-        {
-            return View();
-        }
-        public ActionResult Footwear()
-        {
-            return View();
-        }
+      
 
        public ActionResult ViewProductCategory(string CategoryName)
         {

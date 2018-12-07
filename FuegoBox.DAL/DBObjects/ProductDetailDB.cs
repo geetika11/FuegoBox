@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FuegoBox.DAL.Exceptions;
+using FuegoBox.Shared.DTO.Category;
 using FuegoBox.Shared.DTO.Product;
 using System;
 using System.Collections.Generic;
@@ -84,7 +85,26 @@ namespace FuegoBox.DAL.DBObjects
 
 
         //}
-       
+       public ProductSearchResultDTO GetProductSearch(string searchString)
+        {
+            IEnumerable<Product> searchResults = dbContext.Product.Where(p => p.Name.Contains(searchString));
+            ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
+            // newProductsSearchResultDTO.Products = ProductSearchMapper.Map<IEnumerable<Product>, IEnumerable<ProductDetailDTO>>(searchResults);
+
+            newProductsSearchResultDTO.Products= (from pi in dbContext.Product.Where(p => p.Name.Contains(searchString))
+                                                 join v in dbContext.Variant on pi.ID equals v.ProductID
+                                                 join img in dbContext.VariantImage on v.ID equals img.VariantID
+                                                 select new ProductDetailDTO()
+                                                 {
+                                                     ImageURL = img.ImageURL,
+                                                     Name = pi.Name,
+                                                     Description=pi.Description
+
+
+                                                 }).ToList();
+
+            return newProductsSearchResultDTO;
+        }
 
     }
 }

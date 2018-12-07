@@ -1,5 +1,4 @@
 ﻿
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,12 +15,21 @@
 
             <h2>Fuego Box</h2>
             <div class="input-group" style="margin-left:200px;margin-top:-80px">
-                
+
+
+                @using (Html.BeginForm("SearchResult", "Category", FormMethod.Get))
+                {
+                    <div class="form-group">
+                        <input type="search" class="form-control search" placeholder="Search" name="SearchString">
+                        <button class="btn btn-primary submit-search text-center" type="submit"><i class="icon-search"></i></button>
+                    </div>
+                }
+
             </div>
             <div class="container ">
 
                 <ul class="nav navbar-nav navbar-right" style="margin-top:20px">
-                   
+
 
                     <li><span class="glyphicon glyphicon-heart"></span>@Html.ActionLink("Home", "Index", "Home")</li>
                     @if (Session["UserID"] != null)
@@ -46,7 +54,7 @@
 
         <ul class="nav navbar-nav" style="height:80px;font-size:20px;">
 
-            <li style="margin-left:20px;padding:25px"><i class="glyphicon glyphicon-book"></i>@Html.ActionLink("Book", "Book", "Category")</li>
+            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Books" })">Books</a></li>
             <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Watch" })">Watches</a></li>
             <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Clothing" })">Clothing</a></li>
             <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Television" })">TV</a></li>
