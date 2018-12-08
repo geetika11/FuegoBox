@@ -44,30 +44,32 @@ namespace FuegoBox.DAL.DBObjects
         }
         public CategoryDTO GetCategoryonHomePage()
         {
-                        CategoryDTO cd = new CategoryDTO();
-            cd.Products = (from cat in dbContext.Category
-                           orderby cat.ProductsSold descending
-                           join pi in dbContext.Product on cat.ID equals pi.CategoryID                           
-                           join v in dbContext.Variant on pi.ID equals v.ProductID                       
-                           orderby v.QuantitySold descending
-                           select new ProductDetailDTO()
-                           {
-                               Name = pi.Name,
-                           });    
-            // var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList();
-            //foreach(var cato in categories)
-            //{
-            //    cd.Products = (from pi in dbContext.Product 
-            //                    join v in dbContext.Variant on pi.ID equals v.ProductID
+            CategoryDTO cd = new CategoryDTO();
+            var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList().Take(3);
+            foreach (var cato in categories)
+            {
+            cd.Products = (from pi in dbContext.Product
+                               where pi.CategoryID == cato.ID
+                               join v in dbContext.Variant on pi.ID equals v.ProductID
+                               orderby v.QuantitySold descending
+                               select new ProductDetailDTO()
+                               {
+                                   CatName=cato.Name,
+                                   Name = pi.Name,
+                                   Description=pi.Description,
+                                   OrderLimit=0,
+                                   ListingPrice = v.ListingPrice,
+                                   Discount =v.Discount,
+                                  ImageURL="abc"
+                                                                  
+                               }).ToList().Take(3);
+              
+               //cd.Products=cd.Products.Concat(abc);
+              
 
-            //                    orderby v.QuantitySold descending
-
-            //                    select new ProductDetailDTO()
-            //                    {
-            //                        Name = pi.Name,
-            //                        CatName = cato.Name
-            //                    }).ToList(); 
-            //}
+            }
+            
+          
             return cd;
         }
     }
