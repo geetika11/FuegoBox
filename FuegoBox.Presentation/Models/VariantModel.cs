@@ -9,5 +9,9 @@ namespace FuegoBox.Presentation.Models
     {
         public double ListingPrice { get; set; }
         public double Discount { get; set; }
+        public ProductDetail Product;
+        public string Variant_Property { get; set; }
+        public string Variant_Value1 { get; set; }
+        public string Variant_Value2 { get; set; }
     }
 }

@@ -10,6 +10,11 @@ namespace FuegoBox.Shared.DTO.Product
     {
         public double ListingPrice { get; set; }
         public double Discount { get; set; }
-        
+        public ProductDetailDTO Product;
+        public string Variant_Property { get; set; }
+        public string Variant_Value1 { get; set; }
+        public string Variant_Value2 { get; set; }
+
+
     }
 }
