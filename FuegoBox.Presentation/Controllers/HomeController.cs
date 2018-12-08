@@ -1,4 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
+using FuegoBox.Business.BusinessObjects;
+using FuegoBox.Presentation.Models;
+using FuegoBox.Shared.DTO.Category;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +12,23 @@ namespace FuegoBox.Presentation.Controllers
 {
     public class HomeController : Controller
     {
+        IMapper catMapper;
+        CategoryDetailContext cdc;
+        public HomeController()
+        {  cdc = new CategoryDetailContext();
+            var conf = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<CategoryDTO, CategoryModel>();
+            });
+            catMapper = new Mapper(conf);          
+                    }
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+            CategoryModel categorymodel = new CategoryModel();
+            CategoryDTO cdto = new CategoryDTO();
+            cdto = cdc.GetCategoryOnHomePage();
+            categorymodel = catMapper.Map<CategoryDTO, CategoryModel>(cdto);
+            return View(categorymodel);            
+        }        
     }
 }

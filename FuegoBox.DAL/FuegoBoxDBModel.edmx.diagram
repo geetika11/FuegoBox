@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="1aaaa234926d48a1b9a86ad9c40d22df" Name="Diagram1">
+      <Diagram DiagramId="1aaaa234926d48a1b9a86ad9c40d22df" Name="Diagram1" ZoomLevel="77">
         <EntityTypeShape EntityType="FuegoModel.Address" Width="1.5" PointX="6" PointY="14.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FuegoModel.Cart" Width="1.5" PointX="7.5" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FuegoModel.Category" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />

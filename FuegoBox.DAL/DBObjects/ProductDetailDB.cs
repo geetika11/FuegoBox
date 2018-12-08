@@ -15,7 +15,7 @@ namespace FuegoBox.DAL.DBObjects
     {
         FuegoEntities dbContext;
         IMapper ProductSearchMapper;
-        IMapper P_DTOmapper, v_DTOmapper,cart_mapper;
+        IMapper P_DTOmapper, v_DTOmapper;
         public ProductDetailDB()
         {
             dbContext = new FuegoEntities();
@@ -32,14 +32,11 @@ namespace FuegoBox.DAL.DBObjects
             {
                 cfg.CreateMap<Variant, VariantDTO>();
             });
-            var configuration = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<CardDTO, Cart>();
-            });
+           
             ProductSearchMapper = new Mapper(productsSearchDTOConfig);
             v_DTOmapper = new Mapper(conf);
             P_DTOmapper = new Mapper(config);
-            cart_mapper = new Mapper(configuration);
+          
         }
    public ProductDetailDTO GetDetail(ProductDetailDTO productDetailDTO)
         {
@@ -61,36 +58,32 @@ namespace FuegoBox.DAL.DBObjects
             }
             return null;
         }
-        public CardDTO AddProduct( ProductDetailDTO pdto)
+
+
+        public ProductDetailDTO AddProduct( ProductDetailDTO pdto)
         {
+            
             Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
-            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();          
-            CardDTO cartdto = new CardDTO();
-            Cart cart = new Cart();        
+            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
+            ProductDetailDTO cartdto = new ProductDetailDTO();
+            Cart cart = new Cart();
+           
             cart.ID = Guid.NewGuid();
             cart.VariantID = variant.ID;
             cart.SellingPrice = variant.Discount;
             cart.Qty = 2;
-            cartdto.VariantID = variant.ID;
-            cartdto.SellingPrice = variant.Discount;          
+            
+            cartdto.Name = product.Name;        
             dbContext.Cart.Add(cart);
             dbContext.SaveChanges();
             return cartdto;           
         }
 
-        //public List<Cart> GetCardItems()
-        //{
-
-        //  return dbContext.Cart.ToList();
-
-
-        //}
        public ProductSearchResultDTO GetProductSearch(string searchString)
         {
             IEnumerable<Product> searchResults = dbContext.Product.Where(p => p.Name.Contains(searchString));
             ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
-            // newProductsSearchResultDTO.Products = ProductSearchMapper.Map<IEnumerable<Product>, IEnumerable<ProductDetailDTO>>(searchResults);
-
+           
             newProductsSearchResultDTO.Products= (from pi in dbContext.Product.Where(p => p.Name.Contains(searchString))
                                                  join v in dbContext.Variant on pi.ID equals v.ProductID
                                                  join img in dbContext.VariantImage on v.ID equals img.VariantID
@@ -99,8 +92,6 @@ namespace FuegoBox.DAL.DBObjects
                                                      ImageURL = img.ImageURL,
                                                      Name = pi.Name,
                                                      Description=pi.Description
-
-
                                                  }).ToList();
 
             return newProductsSearchResultDTO;

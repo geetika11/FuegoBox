@@ -16,7 +16,7 @@
             <h2>Fuego Box</h2>
             <div class="input-group" style="margin-left:200px;margin-top:-80px">
 
-
+                
                 @using (Html.BeginForm("SearchResult", "Category", FormMethod.Get))
                 {
                     <div class="form-group">
@@ -26,42 +26,45 @@
                 }
 
             </div>
-            <div class="container ">
+          
+                <div class="pull-right">
 
-                <ul class="nav navbar-nav navbar-right" style="margin-top:20px">
+                    <ul class="nav navbar-nav navbar-right" style="margin-top:20px">
 
 
-                    <li><span class="glyphicon glyphicon-heart"></span>@Html.ActionLink("Home", "Index", "Home")</li>
-                    @if (Session["UserID"] != null)
-                    {
-                        <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("Logout", "Logout", "Login")</li>
-                        <li><h4 style="color:white">@Session["name"]</h4></li>
-                    }
-                    else
-                    {
+                        <li><span class="glyphicon glyphicon-heart"></span>@Html.ActionLink("Home", "Index", "Home")</li>
+                        @if (Session["UserID"] != null)
+                        {
+                            <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                            <li><h4 style="color:white">@Session["name"]</h4></li>
+                        }
+                        else
+                        {
 
-                        <li><i class="glyphicon glyphicon-log-in"></i>@Html.ActionLink("Login", "Index", "Login")</li>
-                        <li><i class="glyphicon glyphicon-user"></i>@Html.ActionLink("Register", "Index", "Register")</li>
-                    }
+                            <li><i class="glyphicon glyphicon-log-in"></i>@Html.ActionLink("Login", "Index", "Login")</li>
+                            <li><i class="glyphicon glyphicon-user"></i>@Html.ActionLink("Register", "Index", "Register")</li>
+                        }
 
-                </ul>
+                    </ul>
+            
 
             </div>
         </nav>
 
     </div>
     <div style="height:100px;background-color:whitesmoke">
-
-        <ul class="nav navbar-nav" style="height:80px;font-size:20px;">
-
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Books" })">Books</a></li>
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Watch" })">Watches</a></li>
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Clothing" })">Clothing</a></li>
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Television" })">TV</a></li>
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Mobile" })">Mobile</a></li>
-            <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Footwear" })">Footwear</a></li>
-
-        </ul>
+        <div>
+            <ul class="nav navbar-nav" style="height:80px;font-size:20px;">
+              
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Books" })">Books</a></li>
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Watch" })">Watches</a></li>
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Clothing" })">Clothing</a></li>
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Television" })">TV</a></li>
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Mobile" })">Mobile</a></li>
+                    <li><a href="@Url.Action("ViewProductCategory", "Category", new { CategoryName = "Footwear" })">Footwear</a></li>
+            
+            </ul>
+        </div>
     </div>
 
     <div class="container body-content" style="height:80px">

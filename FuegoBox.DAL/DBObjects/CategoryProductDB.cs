@@ -13,7 +13,7 @@ namespace FuegoBox.DAL.DBObjects
    public class CategoryProductDB
     {
         FuegoEntities dbContext;
-         IMapper P_DTOmapper,c_Mapper;
+         IMapper P_DTOmapper;
         public CategoryProductDB()
         {
             dbContext = new FuegoEntities();
@@ -30,7 +30,6 @@ namespace FuegoBox.DAL.DBObjects
             idvalue = cat.ID;
              ProductDetailDTO p = new ProductDetailDTO();
              IEnumerable<Product> product = dbContext.Product.Where(c => c.CategoryID == idvalue);
-
             CategoryDTO categoryDTO = new CategoryDTO();
             categoryDTO.Name = "Books";
             categoryDTO.Products = (from pi in dbContext.Product.Where(c=>c.CategoryID==idvalue)
@@ -39,19 +38,37 @@ namespace FuegoBox.DAL.DBObjects
                                          select new ProductDetailDTO() {
                                              ImageURL = img.ImageURL,
                                              Name=pi.Name
-
-
                                          }).ToList();
         
-         //for (var i = 0; i < product.Count(); i++)
-         //{
-            //  p.ImageURL = product.ElementAt(i).Variant.ElementAt(i).VariantImage.ElementAt(i).ImageURL;
+         return categoryDTO;
+        }
+        public CategoryDTO GetCategoryonHomePage()
+        {
+                        CategoryDTO cd = new CategoryDTO();
+            cd.Products = (from cat in dbContext.Category
+                           orderby cat.ProductsSold descending
+                           join pi in dbContext.Product on cat.ID equals pi.CategoryID                           
+                           join v in dbContext.Variant on pi.ID equals v.ProductID                       
+                           orderby v.QuantitySold descending
+                           select new ProductDetailDTO()
+                           {
+                               Name = pi.Name,
+                           });    
+            // var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList();
+            //foreach(var cato in categories)
+            //{
+            //    cd.Products = (from pi in dbContext.Product 
+            //                    join v in dbContext.Variant on pi.ID equals v.ProductID
+
+            //                    orderby v.QuantitySold descending
+
+            //                    select new ProductDetailDTO()
+            //                    {
+            //                        Name = pi.Name,
+            //                        CatName = cato.Name
+            //                    }).ToList(); 
             //}
-            
-            
-          //  categoryDTO.Products = P_DTOmapper.Map<IEnumerable<Product>, IEnumerable<ProductDetailDTO>>(product1);
-            
-            return categoryDTO;
+            return cd;
         }
     }
 }

@@ -16,7 +16,7 @@ namespace FuegoBox.Presentation.Controllers
     {
         // GET: Card
 
-        IMapper productmapper, cardMapper;
+        IMapper productmapper;
        
         ProductDetailContext productDetailContext;
         ProductDetailDB pdb;
@@ -30,34 +30,23 @@ namespace FuegoBox.Presentation.Controllers
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ProductDetail, ProductDetailDTO>();
             });
-
-            var confi = new MapperConfiguration(cfg => {
-                cfg.CreateMap<CardDTO, CardModel>();
-            });
-
-            productmapper = new Mapper(config);
-            cardMapper = new Mapper(confi);
             
-
+            productmapper = new Mapper(config);
+          
         }
         public ActionResult CardDetail([Bind(Include = "Name")]ProductDetail productDetail)
 
         {
+          
+
             ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
-            CardDTO prodDTO = productDetailContext.productAddToCart(productDetailDTO);
-            CardModel p = cardMapper.Map<CardDTO, CardModel>(prodDTO);
+            ProductDetailDTO prodDetailDTO = productDetailContext.productAddToCart(productDetailDTO);
+            ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);
             return View(p);
 
-          
+
+
         }
-
-        //public ActionResult CardDetail()
-        //{
-        //    List<Cart> abc= pdb.GetCardItems();
-        //    return View();
-
-           
-        //}
         
     }
 }

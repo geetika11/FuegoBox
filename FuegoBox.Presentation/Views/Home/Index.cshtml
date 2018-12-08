@@ -1,6 +1,13 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<h2>Dashboard</h2>
+
+
+
+@foreach(var prod in Model.Products)
+{
+    <h2>NAME: @prod.Name</h2>
+   
+}
 
 
