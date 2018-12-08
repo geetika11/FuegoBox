@@ -1,5 +1,5 @@
 ﻿@model FuegoBox.Presentation.Models.ProductDetail
-    @{ 
+@{
     ViewBag.Title = "PDetail";
 }
 
@@ -14,14 +14,17 @@
 
 
 <h4><b>Discount Price:</b> @Model.Discount</h4>
-<img src="@Model.ImageURL" width="200px" height="200px" />
 
+<img src="@Model.ImageURL" height="150px" width="150px" />
 <button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
+
+
 @foreach (var Variant in Model.Variants)
 {
-<select>
-    <option value=@Variant.Variant_Property> @Variant.Variant_Property</option>
-    <option value=@Variant.Variant_Value1>black @Variant.Variant_Value1</option>
-    <option value=@Variant.Variant_Value2>white @Variant.Variant_Value2</option>
-</select>
+    <img src="@Variant.image" height="100px" width="100px"/>
+    <select>
+        <option value=@Variant.Variant_Value1>@Variant.Variant_Property: @Variant.Variant_Value1</option>
+        <option value=@Variant.ListingPrice>ListingPrice: @Variant.ListingPrice</option>
+    </select>
 }
+

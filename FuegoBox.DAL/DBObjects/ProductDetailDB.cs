@@ -41,38 +41,38 @@ namespace FuegoBox.DAL.DBObjects
    public ProductDetailDTO GetDetail(ProductDetailDTO productDetailDTO)
         {
             Product product = dbContext.Product.Where(a => a.Name == productDetailDTO.Name).FirstOrDefault();
-           // Category cat = dbContext.Category.Where(f => f.ID == product.CategoryID).FirstOrDefault();            
+                  
              IEnumerable< Variant> variant = dbContext.Variant.Where(s => s.ProductID == product.ID);
               
 
             if (product!= null)
             {
-               // VariantDTO vdto= v_DTOmapper.Map< Variant, VariantDTO>(variant);
+              
                 ProductDetailDTO newBasicDTO = P_DTOmapper.Map<Product, ProductDetailDTO>(product);
-
-               // newBasicDTO.Variants = v_DTOmapper.Map<IEnumerable<Variant>, IEnumerable<VariantDTO>>(product.Variant);
-                //  newBasicDTO.ListingPrice = vdto.ListingPrice;
-                newBasicDTO.Name = product.Name;
-                // newBasicDTO.CatName=cat.Name;
-                //  newBasicDTO.Discount = vdto.Discount;
-                // newBasicDTO.ImageURL = vi.ImageURL;
+                 newBasicDTO.Name = product.Name;
+            
                 newBasicDTO.Variants = (from v in dbContext.Variant.Where(cdf => cdf.ProductID == product.ID)
                                         join vp in dbContext.VariantProperty on v.ID equals vp.VariantID
+                                        join img in dbContext.VariantImage on v.ID equals img.VariantID
                                         join vpv in dbContext.VariantPropertyValue on vp.PropertyValueID equals vpv.ID
-                                        join p in dbContext.Property on vpv.PropertyID equals p.ID 
-                                       
+                                        join p in dbContext.Property on vpv.PropertyID equals p.ID
+                                        join value in dbContext.Value on vpv.ValueID equals value.ID
                                         select new VariantDTO()
                                         {
                                             ListingPrice=v.ListingPrice,
                                             Discount=v.Discount,
                                             Variant_Property=p.Name,
-                                           
+                                            Variant_Value1=value.Name,
+                                            image=img.ImageURL
 
                                         });
 
 
-                
+               Variant var=  dbContext.Variant.Where(cdf => cdf.ProductID == product.ID).FirstOrDefault();
+               VariantImage ima = dbContext.VariantImage.Where(cd => cd.VariantID == var.ID).FirstOrDefault();
+                // newBasicDTO.ImageURL = ima;
 
+                newBasicDTO.ImageURL = ima.ImageURL;
                 return newBasicDTO;
             }
             return null;

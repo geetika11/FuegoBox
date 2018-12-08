@@ -14,6 +14,7 @@ namespace FuegoBox.Shared.DTO.Product
         public string Variant_Property { get; set; }
         public string Variant_Value1 { get; set; }
         public string Variant_Value2 { get; set; }
+        public string image { get; set; }
 
 
     }

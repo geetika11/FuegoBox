@@ -19,5 +19,7 @@ namespace FuegoBox.DAL
         public string ImageURL { get; set; }
     
         public virtual Variant Variant { get; set; }
+
+        
     }
 }
