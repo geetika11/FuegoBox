@@ -10,7 +10,5 @@ namespace FuegoBox.Presentation.Models
     {
         public string Name { get; set; }
         public IEnumerable<ProductDetail> Products;
-
-
     }
 }

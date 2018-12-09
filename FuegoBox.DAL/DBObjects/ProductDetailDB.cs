@@ -70,28 +70,31 @@ namespace FuegoBox.DAL.DBObjects
 
                Variant var=  dbContext.Variant.Where(cdf => cdf.ProductID == product.ID).FirstOrDefault();
                VariantImage ima = dbContext.VariantImage.Where(cd => cd.VariantID == var.ID).FirstOrDefault();
-                // newBasicDTO.ImageURL = ima;
-
                 newBasicDTO.ImageURL = ima.ImageURL;
                 return newBasicDTO;
             }
             return null;
         }
-
+        public bool ProductExists(string Name)
+        {
+            Product product = dbContext.Product.Where(asd => asd.Name == Name).FirstOrDefault();
+            if (product == null)
+            {
+                throw new ProductNotFound();
+            }
+            return true;
+        }
 
         public ProductDetailDTO AddProduct( ProductDetailDTO pdto)
         {
-            
             Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
             Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
             ProductDetailDTO cartdto = new ProductDetailDTO();
-            Cart cart = new Cart();
-           
+            Cart cart = new Cart();           
             cart.ID = Guid.NewGuid();
             cart.VariantID = variant.ID;
             cart.SellingPrice = variant.Discount;
-            cart.Qty = 2;
-            
+            cart.Qty = 2;            
             cartdto.Name = product.Name;        
             dbContext.Cart.Add(cart);
             dbContext.SaveChanges();
@@ -100,10 +103,8 @@ namespace FuegoBox.DAL.DBObjects
 
        public ProductSearchResultDTO GetProductSearch(string searchString)
         {
-            IEnumerable<Product> searchResults = dbContext.Product.Where(p => p.Name.Contains(searchString));
             ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
-           
-            newProductsSearchResultDTO.Products= (from pi in dbContext.Product.Where(p => p.Name.Contains(searchString))
+            newProductsSearchResultDTO.Products= (from pi in dbContext.Product.Where(p => p.Name.Contains(searchString) || p.Description.Contains(searchString))
                                                  join v in dbContext.Variant on pi.ID equals v.ProductID
                                                  join img in dbContext.VariantImage on v.ID equals img.VariantID
                                                  select new ProductDetailDTO()
@@ -112,7 +113,7 @@ namespace FuegoBox.DAL.DBObjects
                                                      Name = pi.Name,
                                                      Description=pi.Description
                                                  }).ToList();
-
+            
             return newProductsSearchResultDTO;
         }
 

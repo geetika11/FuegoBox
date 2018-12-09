@@ -16,20 +16,14 @@
             <fieldset>
                 <div>
                     <legend><center><h2>Sign up on Fuego Box</h2></center></legend>
-
                     <div class="form-group">
-
                         <label class="col-md-4 control-label">Name</label>
-
                         <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-
                             @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
                             @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
                         </div>
                     </div>
-
-
                 </div>
 
                 <!-- Text input-->
@@ -37,24 +31,19 @@
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">E-Mail</label>
-
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
                         @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
-
-
                 <div class="form-group">
                     <label class="col-md-4 control-label">Password</label>
-
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
                         @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
-
                 </div>
 
 
@@ -62,26 +51,20 @@
 
                 <div class="form-group">
                     <label class="col-md-4 control-label">Contact No.</label>
-
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
                         @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
                         @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                     </div>
+                 </div>
 
-                </div>
-
-                <!-- Select Basic -->
-                <!-- Success message -->
-                <!-- Button -->
-                <div class="form-group">
+                 <div class="form-group">
                     <label class="col-md-4 control-label"></label>
                     <div class="col-md-4">
                         <br>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
                     </div>
                 </div>
-
             </fieldset>
         </form>
         @Html.ActionLink("Login", "Index", "Login")

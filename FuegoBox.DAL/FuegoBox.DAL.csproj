@@ -85,6 +85,7 @@
     <Compile Include="DBObjects\ProductDetailDB.cs" />
     <Compile Include="DBObjects\UserDetail.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
+    <Compile Include="Exceptions\ProductNotFound.cs" />
     <Compile Include="FuegoBoxDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

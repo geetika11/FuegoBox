@@ -1,4 +1,6 @@
-﻿using FuegoBox.DAL.DBObjects;
+﻿using FuegoBox.Business.Exceptions;
+using FuegoBox.DAL.DBObjects;
+using FuegoBox.DAL.Exceptions;
 using FuegoBox.Shared.DTO.Category;
 using System;
 using System.Collections.Generic;
@@ -16,8 +18,20 @@ namespace FuegoBox.Business.BusinessObjects
         {
             catDBObject = new CategoryProductDB();
         }
+
+
+
+
         public CategoryDTO GetCategoryProduct(string catName)
         {
+            try
+            {
+                bool exists = catDBObject.CategoryExists(catName);
+            }
+            catch(NotFoundException ex)
+            {
+                throw new CategoryDoesNotExists();
+            }
             CategoryDTO catproductDTO = catDBObject.Getproduct(catName);
             return catproductDTO;
         }

@@ -4,20 +4,24 @@
     ViewBag.Title = "SearchResult";
 }
 
-
-
-<h2>Your Search:@ViewBag.searchString</h2>
-@foreach (var product in Model.Products)
+@if (String.IsNullOrEmpty(@ViewBag.searchString))
 {
+    <h2> Your Search String Is Empty..</h2>
+}
+
+else if ((Model.Products.Count() == 0))
+{
+    <h2> No Items matching Your Search Criteria</h2>
+}
 
 
 
-    <h2><a href="@Url.Action("PDetail", "Category", new { Name = product.Name })">@product.Name</a></h2>
-
-    <h2> DESCRIPTION: @product.Description</h2>
-
-
-    <img src="@product.ImageURL" width="150px" height="150px" />
-
-
+else
+{
+    foreach (var product in Model.Products)
+    {
+        <h2><a href="@Url.Action("PDetail", "Category", new { Name = product.Name })">@product.Name</a></h2>
+        <h2> DESCRIPTION: @product.Description</h2>
+        <img src="@product.ImageURL" width="150px" height="150px" />
+    }
 }

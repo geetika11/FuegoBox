@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FuegoBox.DAL.Exceptions;
 using FuegoBox.Shared.DTO.Category;
 using FuegoBox.Shared.DTO.Product;
 using System;
@@ -65,12 +66,23 @@ namespace FuegoBox.DAL.DBObjects
                                }).ToList().Take(3);
               
                //cd.Products=cd.Products.Concat(abc);
-              
-
+            
             }
             
           
             return cd;
         }
+
+
+        public bool CategoryExists(string CategoryName)
+        {
+            Category category = dbContext.Category.Where(c => c.Name == CategoryName).FirstOrDefault();
+            if (category == null)
+            {
+                throw new NotFoundException();
+            }
+            return true;
+        }
+
     }
 }

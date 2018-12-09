@@ -27,10 +27,16 @@ namespace FuegoBox.Presentation.Controllers
             CategoryModel categorymodel = new CategoryModel();
             CategoryDTO cdto = new CategoryDTO();
             cdto = catMapper.Map<CategoryModel, CategoryDTO>(categorymodel);
-
-            cdto = cdc.GetCategoryOnHomePage();
-            categorymodel = catMapper.Map<CategoryDTO, CategoryModel>(cdto);
-            return View(categorymodel);            
+            try
+            {
+                cdto = cdc.GetCategoryOnHomePage();
+                categorymodel = catMapper.Map<CategoryDTO, CategoryModel>(cdto);
+                return View(categorymodel);
+            }
+            catch(Exception)
+            {
+                return View("Internal Error");
+            }
         }        
     }
 }

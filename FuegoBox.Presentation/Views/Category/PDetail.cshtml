@@ -2,23 +2,13 @@
 @{
     ViewBag.Title = "PDetail";
 }
-
-
 <h4><b>Name:</b> @Model.Name</h4>
-
 <h4><b>Description:</b> @Model.Description</h4>
-
 <h4><b>Category:</b> @Model.CatName</h4>
-
 <h4><b>Price:</b> @Model.ListingPrice</h4>
-
-
 <h4><b>Discount Price:</b> @Model.Discount</h4>
-
 <img src="@Model.ImageURL" height="150px" width="150px" />
 <button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
-
-
 @foreach (var Variant in Model.Variants)
 {
     <img src="@Variant.image" height="100px" width="100px"/>

@@ -11,8 +11,6 @@ namespace FuegoBox.Shared.DTO.Category
     {
         public string Name { get; set; }
         public IEnumerable<ProductDetailDTO> Products { get; set; }
-//        public string ImageURL { get; set; }
-
 
 
     }

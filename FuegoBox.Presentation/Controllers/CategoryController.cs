@@ -1,6 +1,8 @@
 ﻿
 using AutoMapper;
 using FuegoBox.Business.BusinessObjects;
+using FuegoBox.Business.Exceptions;
+using FuegoBox.Presentation.ActionFilters;
 using FuegoBox.Presentation.Models;
 using FuegoBox.Shared.DTO.Category;
 using FuegoBox.Shared.DTO.Product;
@@ -14,18 +16,15 @@ namespace FuegoBox.Presentation.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: Category
+        
         IMapper productmapper;
         IMapper catMapper, ProductsSearchResultVMMapper;
         ProductDetailContext productDetailContext;
         CategoryDetailContext categoryDetailContext;
-
         public CategoryController()
         {
-
             productDetailContext = new ProductDetailContext();
             categoryDetailContext = new CategoryDetailContext();
-
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ProductDetail, ProductDetailDTO>();
             });
@@ -57,15 +56,18 @@ namespace FuegoBox.Presentation.Controllers
             if (String.IsNullOrEmpty(searchString))
             {
                
-                return View("Search");//TODO
+                return View();//TODO
             }
             try
             {
                 ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
                 ProductsSearchViewModel viewModel = new ProductsSearchViewModel();
-                CategoryDTO cd = new CategoryDTO();
-
                 newProductsSearchResultDTO = productDetailContext.GetProductwithString(searchString);
+                if (newProductsSearchResultDTO.Products.Count()==0)
+                {
+                    return View("NoSearch");
+                }
+
                 viewModel = ProductsSearchResultVMMapper.Map<ProductSearchResultDTO, ProductsSearchViewModel>(newProductsSearchResultDTO);
                 ViewBag.searchString = searchString;
                 return View(viewModel);
@@ -79,22 +81,27 @@ namespace FuegoBox.Presentation.Controllers
         }
 
 
-
-        public ActionResult PDetail([Bind(Include = "Name")] ProductDetail productDetail)
+        [UserAuthenticationFilter]
+        public ActionResult PDetail([Bind(Include = "Name")]ProductDetail productDetail)
         {
+            ProductDetailDTO prodDetailDTO = new ProductDetailDTO();
             try
             {
                 ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
-                ProductDetailDTO prodDetailDTO = productDetailContext.GetProductDetail(productDetailDTO);
-                ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);
-                return View(p);
+                prodDetailDTO = productDetailContext.GetProductDetail(productDetailDTO);
+               
+            }
+            catch (CategoryDoesNotExists ex)
+            {
+                return View("Error" + ex);
             }
             catch (Exception ex)
             {
 
                 ModelState.AddModelError("", ex + ":Exception occured");
             }
-            return View();
+            ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);
+            return View(p);
         }
       
 

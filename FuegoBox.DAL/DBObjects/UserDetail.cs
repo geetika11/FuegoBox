@@ -66,7 +66,7 @@ namespace FuegoBox.DAL.DBObjects
 
         public UserBasicDTO GetUser(UserLoginDTO userLoginDTO)
         {
-            User user= dbContext.User.Where(a => a.Email == userLoginDTO.Email).FirstOrDefault();
+            User user= dbContext.User.Where(a => a.Email == userLoginDTO.Email).First();
             if (user != null)
             {
                 UserBasicDTO newuserBasicDTO = userUserBasicDTOMapper.Map<User, UserBasicDTO>(user);
@@ -84,7 +84,6 @@ namespace FuegoBox.DAL.DBObjects
             User user = UserRegisterDTOusermapper.Map<UserRegisterDTO, User>(userRegisterDTO);
             user.ID = Guid.NewGuid();
             user.RoleID= dbContext.Role.Where(r => r.Name == "user").First().ID;
-            //user.Role.Add(dbContext.Role.Where(r => r.Name == "user").First());
             dbContext.User.Add(user);
             dbContext.SaveChanges();
             UserBasicDTO userBasicDTO = userUserBasicDTOMapper.Map<User, UserBasicDTO>(user);
@@ -95,14 +94,10 @@ namespace FuegoBox.DAL.DBObjects
         {
             User user = dbContext.User.Where(u => u.ID == UserID).First();
             Role role = dbContext.Role.Where(r => r.Name == "admin").FirstOrDefault();
-
             if (user.RoleID == role.ID)
             {
                 return true;
             }
-
-
-
             return false;
         }
     }
