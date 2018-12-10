@@ -2,6 +2,7 @@
 using FuegoBox.DAL.DBObjects;
 using FuegoBox.DAL.Exceptions;
 using FuegoBox.Shared.DTO.Category;
+using FuegoBox.Shared.DTO.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;

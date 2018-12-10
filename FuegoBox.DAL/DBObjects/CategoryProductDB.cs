@@ -45,31 +45,40 @@ namespace FuegoBox.DAL.DBObjects
         }
         public CategoryDTO GetCategoryonHomePage()
         {
+          
+            
             CategoryDTO cd = new CategoryDTO();
-            var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList().Take(3);
-            foreach (var cato in categories)
+            //IEnumerable<Product> pr = new List<Product>();
+            List<List<ProductDetailDTO>> abcd = new List<List<ProductDetailDTO>>();
+           var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList().Take(3);
+            foreach (Category cato in categories)
             {
-            cd.Products = (from pi in dbContext.Product
-                               where pi.CategoryID == cato.ID
-                               join v in dbContext.Variant on pi.ID equals v.ProductID
-                               orderby v.QuantitySold descending
+               cd.Products= (from pi in dbContext.Product
+                                where pi.CategoryID == cato.ID
+                                join v in dbContext.Variant on pi.ID equals v.ProductID
+                                orderby v.QuantitySold descending
                                select new ProductDetailDTO()
                                {
-                                   CatName=cato.Name,
                                    Name = pi.Name,
-                                   Description=pi.Description,
-                                   OrderLimit=0,
+                                   CatName = cato.Name,
                                    ListingPrice = v.ListingPrice,
-                                   Discount =v.Discount,
-                                  ImageURL="abc"
-                                                                  
+                                   Discount = v.Discount,
+                              
                                }).ToList().Take(3);
-              
-               //cd.Products=cd.Products.Concat(abc);
-            
+
+
+                abcd.Add(cd.Products.ToList());
+
             }
-            
-          
+            List<ProductDetailDTO> prs = new List<ProductDetailDTO>();
+           foreach(var asd in abcd)
+            {
+                foreach(var ass in asd)
+                {
+                    prs.Add(ass);
+                }
+            }
+            cd.Products = prs;
             return cd;
         }
 
