@@ -2,59 +2,16 @@
 @{
     ViewBag.Title = "PDetail";
 }
-
-
+<h2>Name: @Model.Name</h2>
+<h3>Description: @Model.Description</h3>
 
 <img id="imageToSwap" src="@Model.ImageURL" height="150px" width="150px" />
 
-
 <button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
-
-@{
-
-    int i = 0;
-    <select onchange="myfunc(this.options[this.selectedIndex],i))">
-
-        @foreach (var Variant in Model.Variants)
-        {
-
+<select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
+    @foreach (var Variant in Model.Variants)
+    {
             <option value=@Variant.image>@Variant.Variant_Property: @Variant.Variant_Value1</option>
-
-        }
-    </select>
-
-   
-    
-        <h4 id="changeName">Listing Price: @Model.Variants.ElementAt(i).ListingPrice</h4>
-
-        <!--<h4><b>Description:</b> </h4><!-- <h4  id="ChangeDescription">Descrition: Model.Variants.ElementAt(0)</h4>-->
-
-        <h4><b>Discount:@Model.Variants.ElementAt(i).Discount</b></h4>
-
-    
-    
-
-
-}
-
-
-
-
-<script>
-    //document.getElementById('changeName').innerHTML = "abc";
-    var description = document.getElementById('changeDescription');
-    var category = document.getElementById('changeDescription');
-    //name.innerHTML = 'abc';
-    function myfunc(selectedIndex, i) {
-        jQuery('#imageToSwap').attr('src', selectedIndex.value);
-        if(i == 0){
-        i = 1;
     }
-    else {
-        i = 0;
-        }
-        location.reload(true);
-    return i;
-    }
-</script>
+</select>
 

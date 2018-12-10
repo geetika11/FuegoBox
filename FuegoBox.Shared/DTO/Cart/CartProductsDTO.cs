@@ -10,6 +10,9 @@ namespace FuegoBox.Shared.DTO.Cart
     {
         public string Name { get; set; }
         public double SellingPrice { get; set; }
+        public System.Guid ID { get; set; }
+        public System.Guid Variant_ID { get; set; }
+
 
     }
 }

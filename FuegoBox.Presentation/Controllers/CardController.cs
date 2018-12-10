@@ -62,6 +62,12 @@ namespace FuegoBox.Presentation.Controllers
             vcm = cartMapper.Map<ViewCartDTO, ViewCartModel>(vcdto);
             return View(vcm);
         }
-        
+
+        public ActionResult RemoveItem(Guid VariantID)
+        {
+            cdc.RemoveItem(new Guid(Session["UserID"].ToString()), VariantID);
+            return RedirectToAction("ViewCart");
+        }
+
     }
 }
