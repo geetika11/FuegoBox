@@ -10,21 +10,15 @@ namespace FuegoBox.DAL.DBObjects
 {
     public class CartDatabaseObject
     {
-        FuegoEntities dbContext;
-        IMapper cart_DTOmapper;
+        FuegoEntities dbContext;    
         public CartDatabaseObject()
         {
-            dbContext = new FuegoEntities();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Cart, ViewCartDTO>();
-            });
-            cart_DTOmapper = new Mapper(config);
+            dbContext = new FuegoEntities();            
         }
-
+        
+        //function to display all the cart items according to the user...currently logged in ID of the User is userID
         public ViewCartDTO viewCart(Guid userID)
-        {
-            IEnumerable<Cart> cart = dbContext.Cart.Where(cdd=>cdd.UserID==userID);
+        {         
             ViewCartDTO viewcdto = new ViewCartDTO();
             viewcdto.CartProduct = (from p in dbContext.Cart.Where(cdd => cdd.UserID == userID)
                                     select new CartProductsDTO()
@@ -36,6 +30,8 @@ namespace FuegoBox.DAL.DBObjects
             return viewcdto;
         }
 
+
+        //function to remove the item from the cart according to the logged in user and variant id...
         public void RemoveItem(Guid UserID, Guid VariantID)
         {
             dbContext.Cart.RemoveRange(dbContext.Cart.Where(c => c.UserID == UserID && c.VariantID == VariantID));

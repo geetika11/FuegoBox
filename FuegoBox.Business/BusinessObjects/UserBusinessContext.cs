@@ -14,12 +14,13 @@ namespace FuegoBox.Business.BusinessObjects
 {
     public class UserBusinessContext
     {
-        UserDetail UserDBObject;
-       
+        UserDetail UserDBObject;       
         public UserBusinessContext()
         {
             UserDBObject = new UserDetail();
         }
+
+        //adding new register to the database..
         public UserBasicDTO RegisterUser(UserRegisterDTO userRegisterDTO)
         {
             try
@@ -42,12 +43,11 @@ namespace FuegoBox.Business.BusinessObjects
             catch(Exception ex)
             {
                 throw new Exception();
-            }
-           
-
+            }         
             return null;
         }
 
+        //log in the user...
         public UserBasicDTO LoginUser(UserLoginDTO userLoginDTO)
         {
             try
@@ -65,10 +65,10 @@ namespace FuegoBox.Business.BusinessObjects
             catch (NotFoundException ex)
             {
                 throw new InvalidLoginException();
-            }
-
-            
+            }            
         }
+
+        //passing user's id to dal layer to check whether he is admin or not.
         public bool CheckAdmin(Guid UserID)
         {
             return UserDBObject.CheckAdmin(UserID);

@@ -14,43 +14,19 @@ namespace FuegoBox.DAL.DBObjects
    public class ProductDetailDB
     {
         FuegoEntities dbContext;
-        IMapper ProductSearchMapper;
-        IMapper P_DTOmapper, v_DTOmapper;
         public ProductDetailDB()
         {
             dbContext = new FuegoEntities();
-            var config = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Product, ProductDetailDTO>();
-            });
-            var productsSearchDTOConfig = new MapperConfiguration(cfg => {
-                cfg.CreateMap<Product, ProductDetailDTO>();
-               
-            });
-
-            var conf = new MapperConfiguration(cfg =>
-            {
-                cfg.CreateMap<Variant, VariantDTO>();
-            });
-           
-            ProductSearchMapper = new Mapper(productsSearchDTOConfig);
-            v_DTOmapper = new Mapper(conf);
-            P_DTOmapper = new Mapper(config);
-          
         }
+
+        //function to get the details of the product using name of the product
    public ProductDetailDTO GetDetail(ProductDetailDTO productDetailDTO)
         {
             Product product = dbContext.Product.Where(a => a.Name == productDetailDTO.Name).FirstOrDefault();
-                  
-             IEnumerable< Variant> variant = dbContext.Variant.Where(s => s.ProductID == product.ID);
-              
-
-            if (product!= null)
+           if (product!= null)
             {
-              
-                ProductDetailDTO newBasicDTO = P_DTOmapper.Map<Product, ProductDetailDTO>(product);
-                 newBasicDTO.Name = product.Name;
-            
+                ProductDetailDTO newBasicDTO = new ProductDetailDTO();            
+                newBasicDTO.Name = product.Name;
                 newBasicDTO.Variants = (from v in dbContext.Variant.Where(cdf => cdf.ProductID == product.ID)
                                         join vp in dbContext.VariantProperty on v.ID equals vp.VariantID
                                         join img in dbContext.VariantImage on v.ID equals img.VariantID
@@ -63,18 +39,17 @@ namespace FuegoBox.DAL.DBObjects
                                             Discount=v.Discount,
                                             Variant_Property=p.Name,
                                             Variant_Value1=value.Name,
-                                            image=img.ImageURL
-
+                                            image = img.ImageURL
                                         });
-
-
                Variant var=  dbContext.Variant.Where(cdf => cdf.ProductID == product.ID).FirstOrDefault();
                VariantImage ima = dbContext.VariantImage.Where(cd => cd.VariantID == var.ID).FirstOrDefault();
-                newBasicDTO.ImageURL = ima.ImageURL;
+               newBasicDTO.ImageURL = ima.ImageURL;
                 return newBasicDTO;
             }
             return null;
         }
+
+        //to check whether the product exists or not.
         public bool ProductExists(string Name)
         {
             Product product = dbContext.Product.Where(asd => asd.Name == Name).FirstOrDefault();
@@ -85,6 +60,7 @@ namespace FuegoBox.DAL.DBObjects
             return true;
         }
 
+        //adding product to the cart using the loggedin user's userID
         public ProductDetailDTO AddProduct( ProductDetailDTO pdto,Guid user_id)
         {
             Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
@@ -102,6 +78,8 @@ namespace FuegoBox.DAL.DBObjects
             return cartdto;           
         }
 
+
+        //search the product using the name or description of the product
        public ProductSearchResultDTO GetProductSearch(string searchString)
         {
             ProductSearchResultDTO newProductsSearchResultDTO = new ProductSearchResultDTO();
@@ -113,10 +91,8 @@ namespace FuegoBox.DAL.DBObjects
                                                      ImageURL = img.ImageURL,
                                                      Name = pi.Name,
                                                      Description=pi.Description
-                                                 }).ToList();
-            
+                                                 }).ToList();            
             return newProductsSearchResultDTO;
         }
-
     }
 }

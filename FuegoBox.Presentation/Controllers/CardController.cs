@@ -18,15 +18,13 @@ namespace FuegoBox.Presentation.Controllers
     {
         // GET: Card
 
-        IMapper productmapper,cartMapper;
-       
+        IMapper productmapper,cartMapper;       
         ProductDetailContext productDetailContext;
         ProductDetailDB pdb;
         CartDetailContext cdc;
      
         public CardController()
         {
-
             productDetailContext = new ProductDetailContext();
             cdc = new CartDetailContext();
             pdb = new ProductDetailDB();
@@ -38,7 +36,6 @@ namespace FuegoBox.Presentation.Controllers
             });
 
             productmapper = new Mapper(config);
-
             cartMapper = new Mapper(conf);
         }
 
@@ -58,7 +55,6 @@ namespace FuegoBox.Presentation.Controllers
             ViewCartDTO vcdto = new ViewCartDTO();
             Guid userId = new Guid(Session["UserID"].ToString());
             vcdto = cdc.viewCart(userId);
-
             vcm = cartMapper.Map<ViewCartDTO, ViewCartModel>(vcdto);
             return View(vcm);
         }

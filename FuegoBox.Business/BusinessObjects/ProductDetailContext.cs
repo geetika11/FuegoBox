@@ -14,15 +14,13 @@ namespace FuegoBox.Business.BusinessObjects
 {
    public class ProductDetailContext
     {
-        ProductDetailDB ProductDBObject;
-       
+        ProductDetailDB ProductDBObject;       
         public ProductDetailContext()
         {
             ProductDBObject = new ProductDetailDB();
         }
-
-
-
+         
+        //display detail of the product..
         public ProductDetailDTO GetProductDetail(ProductDetailDTO productDetailDTO)
         {
             try
@@ -37,20 +35,18 @@ namespace FuegoBox.Business.BusinessObjects
             {
                 throw new Exception("Unknown Error");
             }
-
-
             ProductDetailDTO produDetailDTO = ProductDBObject.GetDetail(productDetailDTO);
             return produDetailDTO;            
         }
 
-
-
+        //add product to the cart
         public ProductDetailDTO productAddToCart(ProductDetailDTO productDetailDTO,Guid user_id)
         {
             ProductDetailDTO cDTO = ProductDBObject.AddProduct(productDetailDTO,user_id);
             return cDTO;
         }
 
+        //search product with the name or description
         public ProductSearchResultDTO GetProductwithString(string searchString)
         {
             try
@@ -63,7 +59,5 @@ namespace FuegoBox.Business.BusinessObjects
                 throw new Exception("Unknown Error");
             }
         }
-
-
     }
 }

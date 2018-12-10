@@ -1,5 +1,4 @@
-﻿
-using AutoMapper;
+﻿using AutoMapper;
 using FuegoBox.Business.BusinessObjects;
 using FuegoBox.Business.Exceptions;
 using FuegoBox.Presentation.ActionFilters;
@@ -106,16 +105,12 @@ namespace FuegoBox.Presentation.Controllers
       
 
        public ActionResult ViewProductCategory(string CategoryName)
-        {
-            
+        {            
             CategoryModel categorymodel = new CategoryModel();
             CategoryDTO cdto = new CategoryDTO();
             cdto = categoryDetailContext.GetCategoryProduct(CategoryName);
             categorymodel = catMapper.Map<CategoryDTO, CategoryModel>(cdto);
             return View(categorymodel);
         }
-
-
-
     }
 }
