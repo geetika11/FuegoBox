@@ -5,19 +5,27 @@
 <h4><b>Name:</b> @Model.Name</h4>
 <h4><b>Description:</b> @Model.Description</h4>
 <h4><b>Category:</b> @Model.CatName</h4>
-<h4><b>Price:</b> @Model.ListingPrice</h4>
-<h4><b>Discount Price:</b> @Model.Discount</h4>
-<img src="@Model.ImageURL" height="150px" width="150px" />
-<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
 
-<select>
+
+
+<img id="imageToSwap" src="@Model.ImageURL" height="150px" width="150px" />
+
+
+<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
+<select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
+
     @foreach (var Variant in Model.Variants)
     {
 
-
-        <option value=@Variant.Variant_Value1>@Variant.Variant_Property: @Variant.Variant_Value1</option>
+        <option value=@Variant.image>@Variant.Variant_Property: @Variant.Variant_Value1</option>
 
     }
 </select>
 
+@foreach (var Variant in Model.Variants)
+{
+    
+    <h4 >@Variant.ListingPrice</h4>
+
+}
 

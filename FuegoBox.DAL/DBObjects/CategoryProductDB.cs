@@ -70,6 +70,9 @@ namespace FuegoBox.DAL.DBObjects
                 abcd.Add(cd.Products.ToList());
 
             }
+
+
+
             List<ProductDetailDTO> prs = new List<ProductDetailDTO>();
            foreach(var asd in abcd)
             {
