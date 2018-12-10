@@ -35,6 +35,8 @@
         <AssociationConnector Association="FuegoModel.FK_VariantProperty_VariantID" ManuallyRouted="false" />
         <AssociationConnector Association="FuegoModel.FK_VariantProperty_PropertyValueID" ManuallyRouted="false" />
         <AssociationConnector Association="FuegoModel.UserAddress" ManuallyRouted="false" />
+        <AssociationConnector Association="FuegoModel.FK_AddressUser" />
+        <AssociationConnector Association="FuegoModel.FK_CartUser" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

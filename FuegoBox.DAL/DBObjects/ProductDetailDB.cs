@@ -85,7 +85,7 @@ namespace FuegoBox.DAL.DBObjects
             return true;
         }
 
-        public ProductDetailDTO AddProduct( ProductDetailDTO pdto)
+        public ProductDetailDTO AddProduct( ProductDetailDTO pdto,Guid user_id)
         {
             Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
             Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
@@ -94,7 +94,8 @@ namespace FuegoBox.DAL.DBObjects
             cart.ID = Guid.NewGuid();
             cart.VariantID = variant.ID;
             cart.SellingPrice = variant.Discount;
-            cart.Qty = 2;            
+            cart.Qty = 2;
+            cart.UserID = user_id;
             cartdto.Name = product.Name;        
             dbContext.Cart.Add(cart);
             dbContext.SaveChanges();

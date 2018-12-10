@@ -45,9 +45,9 @@ namespace FuegoBox.Business.BusinessObjects
 
 
 
-        public ProductDetailDTO productAddToCart(ProductDetailDTO productDetailDTO)
+        public ProductDetailDTO productAddToCart(ProductDetailDTO productDetailDTO,Guid user_id)
         {
-            ProductDetailDTO cDTO = ProductDBObject.AddProduct(productDetailDTO);
+            ProductDetailDTO cDTO = ProductDBObject.AddProduct(productDetailDTO,user_id);
             return cDTO;
         }
 

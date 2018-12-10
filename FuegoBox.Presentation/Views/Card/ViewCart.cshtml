@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "ViewCart";
+}
+
+<h2>Shows All items of cart</h2>
+@foreach (var product in Model.CartProduct)
+{
+   
+            <h2>ProductPrice: @product.SellingPrice </h2>
+      
+}
+

@@ -2,7 +2,9 @@
 using FuegoBox.Business.BusinessObjects;
 using FuegoBox.DAL;
 using FuegoBox.DAL.DBObjects;
+using FuegoBox.Presentation.ActionFilters;
 using FuegoBox.Presentation.Models;
+using FuegoBox.Shared.DTO.Cart;
 using FuegoBox.Shared.DTO.Product;
 using System;
 using System.Collections.Generic;
@@ -16,36 +18,49 @@ namespace FuegoBox.Presentation.Controllers
     {
         // GET: Card
 
-        IMapper productmapper;
+        IMapper productmapper,cartMapper;
        
         ProductDetailContext productDetailContext;
         ProductDetailDB pdb;
+        CartDetailContext cdc;
      
         public CardController()
         {
 
             productDetailContext = new ProductDetailContext();
-
+            cdc = new CartDetailContext();
             pdb = new ProductDetailDB();
             var config = new MapperConfiguration(cfg => {
                 cfg.CreateMap<ProductDetail, ProductDetailDTO>();
             });
-            
+            var conf = new MapperConfiguration(cfg => {
+                cfg.CreateMap<ViewCartDTO, ViewCartModel>();
+            });
+
             productmapper = new Mapper(config);
-          
+
+            cartMapper = new Mapper(conf);
         }
+
+        [UserAuthenticationFilter]
         public ActionResult CardDetail([Bind(Include = "Name")]ProductDetail productDetail)
-
         {
-          
-
             ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
-            ProductDetailDTO prodDetailDTO = productDetailContext.productAddToCart(productDetailDTO);
-            ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);
+            Guid user_id = new Guid(Session["UserID"].ToString());
+            ProductDetailDTO prodDetailDTO = productDetailContext.productAddToCart(productDetailDTO,user_id);           
+            ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);            
             return View(p);
+        }
 
+        public ActionResult ViewCart()
+        {
+            ViewCartModel vcm = new ViewCartModel();
+            ViewCartDTO vcdto = new ViewCartDTO();
+            Guid userId = new Guid(Session["UserID"].ToString());
+            vcdto = cdc.viewCart(userId);
 
-
+            vcm = cartMapper.Map<ViewCartDTO, ViewCartModel>(vcdto);
+            return View(vcm);
         }
         
     }
