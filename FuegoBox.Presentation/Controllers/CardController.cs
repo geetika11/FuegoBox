@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FuegoBox.Business.BusinessObjects;
+using FuegoBox.Business.Exceptions;
 using FuegoBox.DAL;
 using FuegoBox.DAL.DBObjects;
 using FuegoBox.Presentation.ActionFilters;
@@ -43,10 +44,22 @@ namespace FuegoBox.Presentation.Controllers
         public ActionResult CardDetail([Bind(Include = "Name, ImageURL")]ProductDetail productDetail)
         {
             ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
+           
             Guid user_id = new Guid(Session["UserID"].ToString());
-            ProductDetailDTO prodDetailDTO = productDetailContext.productAddToCart(productDetailDTO,user_id);           
-            ProductDetail p = productmapper.Map<ProductDetailDTO, ProductDetail>(prodDetailDTO);            
-            return View(p);
+           
+               bool result = productDetailContext.productAddToCart(productDetailDTO, user_id);
+            // 
+            if (result == true)
+            {
+                ProductDetail p = new ProductDetail();
+                return View(p);
+            }
+            else
+            {
+                return View("NotAdded");
+            }
+                
+           
         }
 
         public ActionResult ViewCart()

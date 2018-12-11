@@ -39,6 +39,7 @@ namespace FuegoBox.DAL.DBObjects
 
         public void EmptyCart(Guid UserID)
         {
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             dbContext.Cart.RemoveRange(dbContext.Cart.Where(c => c.UserID == UserID));
             dbContext.SaveChanges();
             return;
@@ -47,6 +48,7 @@ namespace FuegoBox.DAL.DBObjects
         //function to remove the item from the cart according to the logged in user and variant id...
         public void RemoveItem(Guid UserID, Guid VariantID)
         {
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             dbContext.Cart.RemoveRange(dbContext.Cart.Where(c => c.UserID == UserID && c.VariantID == VariantID));
             dbContext.SaveChanges();
             return;

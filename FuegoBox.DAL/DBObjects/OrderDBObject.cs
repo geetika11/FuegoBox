@@ -34,6 +34,7 @@ namespace FuegoBox.DAL.DBObjects
         public Guid AddAddress(AddressDTO addDTO, Guid userid)
         {
             Address address = new Address();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             address.AddressLine1 = addDTO.Address1;
             address.AddressLine2 = addDTO.Address2;
             address.Pin = addDTO.Pin;
@@ -49,6 +50,7 @@ namespace FuegoBox.DAL.DBObjects
         public void PlaceOrder(Guid userid, ViewCartDTO vcdto, Guid addressid)
         {
             Order order = new Order();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             order.ID = Guid.NewGuid();
             order.DeliveryAddressID = addressid;
             order.TotalAmount = vcdto.Total;

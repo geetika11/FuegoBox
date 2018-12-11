@@ -24,6 +24,7 @@ namespace FuegoBox.Business.BusinessObjects
         {
             Guid addressid = orderDBObject.AddAddress(od, userid);
             ViewCartDTO vdto = cdo.viewCart(userid);
+            CartDetailContext cdc = new CartDetailContext();
             double result = new double();
             foreach (var i in vdto.CartProduct)
             {
@@ -31,7 +32,7 @@ namespace FuegoBox.Business.BusinessObjects
 
             }
             vdto.Total = result;
-            orderDBObject.PlaceOrder(userid, vdto, addressid);
+            orderDBObject.PlaceOrder(userid, vdto, addressid);            
             return true;
         }
 

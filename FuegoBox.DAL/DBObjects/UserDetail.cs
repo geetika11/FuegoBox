@@ -56,6 +56,7 @@ namespace FuegoBox.DAL.DBObjects
         public bool UserEmailExists(string Email)
         {
             User user = dbContext.User.Where(a => a.Email == Email).FirstOrDefault();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             if (user != null)
             {
                 return true;
@@ -70,6 +71,7 @@ namespace FuegoBox.DAL.DBObjects
         public UserBasicDTO GetUser(UserLoginDTO userLoginDTO)
         {
             User user= dbContext.User.Where(a => a.Email == userLoginDTO.Email).First();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             if (user != null)
             {
                 UserBasicDTO newuserBasicDTO = userUserBasicDTOMapper.Map<User, UserBasicDTO>(user);
@@ -85,6 +87,7 @@ namespace FuegoBox.DAL.DBObjects
         public UserBasicDTO AddUser(UserRegisterDTO userRegisterDTO)
         {
             User user = UserRegisterDTOusermapper.Map<UserRegisterDTO, User>(userRegisterDTO);
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             user.ID = Guid.NewGuid();
             user.RoleID= dbContext.Role.Where(r => r.Name == "user").First().ID;
             dbContext.User.Add(user);
@@ -98,6 +101,7 @@ namespace FuegoBox.DAL.DBObjects
         public bool CheckAdmin(Guid UserID)
         {
             User user = dbContext.User.Where(u => u.ID == UserID).First();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             Role role = dbContext.Role.Where(r => r.Name == "admin").FirstOrDefault();
             if (user.RoleID == role.ID)
             {
