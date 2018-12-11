@@ -55,6 +55,7 @@ namespace FuegoBox.DAL.DBObjects
             order.UserID = userid;
             order.OrderDate = DateTime.Now;
             order.DeliveryDate = DateTime.Now.AddDays(2);
+            order.isCancelled = "N";
             dbContext.Order.Add(order);
             dbContext.SaveChanges();
 
