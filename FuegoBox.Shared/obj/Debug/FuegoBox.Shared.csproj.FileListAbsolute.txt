@@ -15,3 +15,20 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityF
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.xml
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\FuegoBox.Shared.dll.config
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\FuegoBox.Shared.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\FuegoBox.Shared.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\AutoMapper.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\System.ValueTuple.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\AutoMapper.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\AutoMapper.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\System.ValueTuple.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CoreCompileInputs.cache
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CopyComplete
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.pdb

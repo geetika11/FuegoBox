@@ -21,6 +21,7 @@ namespace FuegoBox.DAL.DBObjects
         {         
             ViewCartDTO viewcdto = new ViewCartDTO();
             viewcdto.CartProduct = (from p in dbContext.Cart.Where(cdd => cdd.UserID == userID)
+
                                     select new CartProductsDTO()
                                     {
                                         SellingPrice = p.SellingPrice,

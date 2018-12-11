@@ -118,9 +118,6 @@
     <Compile Include="Role.cs">
       <DependentUpon>FuegoBoxDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Status.cs">
-      <DependentUpon>FuegoBoxDBModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>FuegoBoxDBModel.tt</DependentUpon>
     </Compile>

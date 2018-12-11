@@ -20,3 +20,25 @@ C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.DAL\obj\Debug\FuegoBox.D
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.DAL\bin\Debug\Fuego.mdf
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.DAL\bin\Debug\Fuego_log.ldf
 C:\Users\geetikavarshney\source\repos\FuegoBox\FuegoBox.DAL\bin\Debug\FuegoBox.Shared.dll.config
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\Fuego.mdf
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\Fuego_log.ldf
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.DAL.dll.config
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.DAL.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.DAL.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\AutoMapper.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\EntityFramework.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.Shared.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\System.ValueTuple.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.Shared.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\FuegoBox.Shared.dll.config
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\AutoMapper.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\AutoMapper.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\EntityFramework.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\bin\Debug\System.ValueTuple.xml
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\obj\Debug\FuegoBox.DAL.csprojAssemblyReference.cache
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\obj\Debug\FuegoBox.DAL.csproj.CoreCompileInputs.cache
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\obj\Debug\FuegoBox.DAL.csproj.CopyComplete
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\obj\Debug\FuegoBox.DAL.dll
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.DAL\obj\Debug\FuegoBox.DAL.pdb
