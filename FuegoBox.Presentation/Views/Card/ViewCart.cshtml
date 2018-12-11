@@ -2,12 +2,13 @@
 @{
     ViewBag.Title = "ViewCart";
 }
-
 <h2>Shows All items of cart</h2>
 @foreach (var product in Model.CartProduct)
 {
     <h2>ProductPrice: @product.SellingPrice </h2>
     <h2>Variant_ID: @product.Variant_ID </h2>
-    <a href="@Url.Action("RemoveItem", "Card", new { VariantID = product.Variant_ID })" >Remove Item</a>
+    <h3>Name: @product.Name</h3>
+    <img src="@product.Url" width="100px" height=" 100px" />
+    <a href="@Url.Action("RemoveItem", "Card", new { VariantID = product.Variant_ID })">Remove Item</a>
 }
-
+    <h2>Value of TotaL: @Model.Total</h2>

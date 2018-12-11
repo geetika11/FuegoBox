@@ -7,6 +7,7 @@ namespace FuegoBox.Presentation.Models
 {
     public class ViewCartModel
     {
-      public  IEnumerable<CartProductModel> CartProduct;
+        public double Total { get; set; }
+        public  IEnumerable<CartProductModel> CartProduct;
     }
 }

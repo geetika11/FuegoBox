@@ -8,6 +8,7 @@ namespace FuegoBox.Shared.DTO.Cart
 {
    public class ViewCartDTO
     {
+        public double Total { get; set; }
         public IEnumerable<CartProductsDTO> CartProduct { get; set; }
     }
 }

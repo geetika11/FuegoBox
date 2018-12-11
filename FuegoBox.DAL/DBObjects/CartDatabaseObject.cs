@@ -20,13 +20,18 @@ namespace FuegoBox.DAL.DBObjects
         public ViewCartDTO viewCart(Guid userID)
         {         
             ViewCartDTO viewcdto = new ViewCartDTO();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             viewcdto.CartProduct = (from p in dbContext.Cart.Where(cdd => cdd.UserID == userID)
-
+                                    join vari in dbContext.Variant on p.VariantID equals vari.ID
+                                    join im in dbContext.VariantImage on vari.ID equals im.VariantID
+                                    join prod in dbContext.Product on vari.ProductID equals prod.ID
                                     select new CartProductsDTO()
                                     {
                                         SellingPrice = p.SellingPrice,
-                                        ID=p.ID,
-                                        Variant_ID=p.VariantID                                    
+                                        ID = p.ID,
+                                        Name = prod.Name,
+                                        Url = im.ImageURL,
+                                        Variant_ID = p.VariantID
                                     });
             return viewcdto;
         }
