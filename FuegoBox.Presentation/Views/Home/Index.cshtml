@@ -1,20 +1,15 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-
-
-
+<h3>top 3</h3>
 @foreach (var prod in Model.Products)
 {
-    <h4>NAME: @prod.Name</h4>
     <h4>Category Name: @prod.CatName</h4>
-
-    <h4>ListingPrice: @prod.ListingPrice</h4>
-
-    <h4>Discount Price: @prod.Discount</h4>
-  <img src="@prod.ImageURL" height="150px" width="150px"/>
+    <h4>NAME: @prod.Name</h4>
+    <img src="@prod.ImageURL" height="150px" width="150px" />
+    <hr />
+    <hr />
 }
-
 
 
 
