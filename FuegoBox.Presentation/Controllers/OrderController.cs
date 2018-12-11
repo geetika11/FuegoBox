@@ -14,15 +14,18 @@ namespace FuegoBox.Presentation.Controllers
     {
         
             OrderContext oc = new OrderContext();
-            IMapper OrderMapper;
+            IMapper OrderMapper, omapper;
             public OrderController()
             {
                 var config = new MapperConfiguration(cfg => {
                     cfg.CreateMap<AddressModel, AddressDTO>();
                 });
+            var conf = new MapperConfiguration(cfg => {
+                cfg.CreateMap<ViewOrderDTO, ViewOrderModel>();
+            });
 
-                OrderMapper = new Mapper(config);
-
+            OrderMapper = new Mapper(config);
+            omapper = new Mapper(conf);
 
             }
             public ActionResult CheckOut()
@@ -45,5 +48,15 @@ namespace FuegoBox.Presentation.Controllers
                 bool abc = oc.AddAddress(odto, userid);
                 return View("PlaceOrder");
             }
+
+        public ActionResult ViewOrderItem()
+        {
+            ViewOrderModel vom = new ViewOrderModel();
+            ViewOrderDTO vodto = new ViewOrderDTO();
+            Guid userId = new Guid(Session["UserID"].ToString());
+            vodto = oc.viewOrder(userId);
+            vom = omapper.Map<ViewOrderDTO, ViewOrderModel>(vodto);
+            return View(vom);
         }
+    }
 }

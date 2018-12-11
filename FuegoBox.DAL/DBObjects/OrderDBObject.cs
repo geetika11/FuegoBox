@@ -61,5 +61,20 @@ namespace FuegoBox.DAL.DBObjects
 
         }
 
+        public ViewOrderDTO ViewOrder(Guid userid)
+        {
+            ViewOrderDTO viewcdto = new ViewOrderDTO();
+            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+            viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd => cdd.UserID == userid)
+                                 
+                                   select new OrderItemsDTO()
+                                   {    
+                                       OrderDate=or.OrderDate,
+                                      
+
+                                   });
+            return viewcdto;
+        }
+
     }
 }

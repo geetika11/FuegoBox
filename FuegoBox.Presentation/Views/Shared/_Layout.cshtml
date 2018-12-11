@@ -26,7 +26,7 @@
                         @if (Session["UserID"] != null)
                         {
                             <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("Logout", "Logout", "Login")</li>
-                            <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("My Orders", "GetOrders", "User")</li>
+                            <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("My Orders", "ViewOrderItem", "Order")</li>
                             <li><i class="glyphicon glyphicon-log-out"></i>@Html.ActionLink("View Cart", "ViewCart", "Card")</li>
                             <li>@Session["name"]</li>
                         }

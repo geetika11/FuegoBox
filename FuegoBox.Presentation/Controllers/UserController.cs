@@ -31,9 +31,6 @@ namespace FuegoBox.Presentation.Controllers
                 return View("InternalError");
             }
         }
-        public ActionResult GetOrders()
-        {
-            return View();
-        }
+       
     }
 }

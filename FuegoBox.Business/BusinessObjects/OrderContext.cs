@@ -34,5 +34,11 @@ namespace FuegoBox.Business.BusinessObjects
             orderDBObject.PlaceOrder(userid, vdto, addressid);
             return true;
         }
+
+        public ViewOrderDTO viewOrder(Guid userid)
+        {
+            ViewOrderDTO vdto = orderDBObject.ViewOrder(userid);
+            return vdto;
+        }
     }
 }
