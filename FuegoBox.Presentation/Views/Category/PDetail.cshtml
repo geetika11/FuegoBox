@@ -7,7 +7,7 @@
 
 <img id="imageToSwap" src="@Model.ImageURL" height="150px" width="150px" />
 
-<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name})">Add To Cart</a></button>
+<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name, ImageURL=Model.ImageURL})">Add To Cart</a></button>
 <select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
     @foreach (var Variant in Model.Variants)
     {

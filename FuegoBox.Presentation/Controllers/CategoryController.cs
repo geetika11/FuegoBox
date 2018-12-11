@@ -80,7 +80,7 @@ namespace FuegoBox.Presentation.Controllers
         }
 
 
-       // [UserAuthenticationFilter]
+        [UserAuthenticationFilter]
         public ActionResult PDetail([Bind(Include = "Name")]ProductDetail productDetail)
         {
             ProductDetailDTO prodDetailDTO = new ProductDetailDTO();

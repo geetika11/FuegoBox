@@ -40,7 +40,7 @@ namespace FuegoBox.Presentation.Controllers
         }
 
         [UserAuthenticationFilter]
-        public ActionResult CardDetail([Bind(Include = "Name")]ProductDetail productDetail)
+        public ActionResult CardDetail([Bind(Include = "Name, ImageURL")]ProductDetail productDetail)
         {
             ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
             Guid user_id = new Guid(Session["UserID"].ToString());

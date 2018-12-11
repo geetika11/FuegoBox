@@ -72,7 +72,8 @@ namespace FuegoBox.DAL.DBObjects
             cart.SellingPrice = variant.Discount;
             cart.Qty = 2;
             cart.UserID = user_id;
-            cartdto.Name = product.Name;        
+            cartdto.Name = product.Name;
+            cartdto.ImageURL = pdto.ImageURL;
             dbContext.Cart.Add(cart);
             dbContext.SaveChanges();
             return cartdto;           

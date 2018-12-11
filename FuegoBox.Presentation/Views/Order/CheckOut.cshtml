@@ -12,17 +12,22 @@
     <label>Address1 </label>
     @Html.TextBoxFor(m => m.Address1, new { @class = "form-control" })
 
+
     <label>Address2 </label>
 
     @Html.TextBoxFor(m => m.Address2, new { @class = "form-control" })
+    
 
     <label>Pin </label>
     @Html.TextBoxFor(m => m.Pin, new { @class = "form-control" })
-
+    
     <button type="submit"> Place Order </button>
 
 }
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
 
 
 
