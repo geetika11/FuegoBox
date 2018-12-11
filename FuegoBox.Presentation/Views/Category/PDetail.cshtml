@@ -2,8 +2,11 @@
 @{
     ViewBag.Title = "PDetail";
 }
-<h2>Name: @Model.Name</h2>
+<h2>Category Name: @Model.CatName</h2>
+<h3>Name: @Model.Name</h3>
 <h3>Description: @Model.Description</h3>
+<h3>Listing Price: @Model.ListingPrice</h3>
+<h3>Discount: @Model.Discount</h3>
 
 <img id="imageToSwap" src="@Model.ImageURL" height="150px" width="150px" />
 

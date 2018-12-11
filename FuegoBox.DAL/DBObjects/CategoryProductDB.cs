@@ -92,7 +92,6 @@ namespace FuegoBox.DAL.DBObjects
                 }
             }
             cd.Products = productList2;
-
             return cd;
         }
 
