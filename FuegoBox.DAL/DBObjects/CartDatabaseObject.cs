@@ -37,6 +37,13 @@ namespace FuegoBox.DAL.DBObjects
         }
 
 
+        public void EmptyCart(Guid UserID)
+        {
+            dbContext.Cart.RemoveRange(dbContext.Cart.Where(c => c.UserID == UserID));
+            dbContext.SaveChanges();
+            return;
+        }
+
         //function to remove the item from the cart according to the logged in user and variant id...
         public void RemoveItem(Guid UserID, Guid VariantID)
         {

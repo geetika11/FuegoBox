@@ -27,7 +27,6 @@ C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.xml
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\bin\Debug\System.ValueTuple.xml
-C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CoreCompileInputs.cache
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CopyComplete
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.dll

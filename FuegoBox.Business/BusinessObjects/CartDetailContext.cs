@@ -26,6 +26,11 @@ namespace FuegoBox.Business.BusinessObjects
             return vdto;
         }
 
+        public bool EmptyCart(Guid UserID)
+        {
+            cdo.EmptyCart(UserID);
+            return true;
+        }
 
         //function to remove the item from the cart....
         public void RemoveItem(Guid UserID, Guid VariantID)
