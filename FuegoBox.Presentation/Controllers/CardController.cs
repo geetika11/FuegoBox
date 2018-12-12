@@ -62,6 +62,7 @@ namespace FuegoBox.Presentation.Controllers
            
         }
 
+        [UserAuthenticationFilter]
         public ActionResult ViewCart()
         {
             ViewCartModel vcm = new ViewCartModel();

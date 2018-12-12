@@ -7,6 +7,7 @@ namespace FuegoBox.Presentation.Models
 {
     public class ProductDetail
     {
+        public Guid ID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int OrderLimit { get; set; }

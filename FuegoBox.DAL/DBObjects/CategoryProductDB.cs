@@ -34,7 +34,9 @@ namespace FuegoBox.DAL.DBObjects
                                          join img in dbContext.VariantImage on v.ID equals img.VariantID
                                          select new ProductDetailDTO() {
                                              ImageURL = img.ImageURL,
-                                             Name=pi.Name
+                                             Name=pi.Name,
+                                             ListingPrice=v.ListingPrice,
+                                             Discount=v.Discount
                                          }).ToList();
         
          return categoryDTO;

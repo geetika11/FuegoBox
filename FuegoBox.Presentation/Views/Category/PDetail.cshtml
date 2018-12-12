@@ -2,19 +2,37 @@
 @{
     ViewBag.Title = "PDetail";
 }
-<h2>Category Name: @Model.CatName</h2>
-<h3>Name: @Model.Name</h3>
-<h3>Description: @Model.Description</h3>
-<h3>Listing Price: @Model.ListingPrice</h3>
-<h3>Discount: @Model.Discount</h3>
+<div class="container">
+    <div class="row p-detail">
+        <div class="col-md-4">
+            <img class="img-fluid" id="imageToSwap" src="@Model.ImageURL" width="250" height="250" />
+        </div>
+        <div class="col-md-6">
 
-<img id="imageToSwap" src="@Model.ImageURL" height="150px" width="150px" />
+            <h2 class="title"><b>Name:</b> @Model.Name</h2>
+            <p><b>Description:</b> @Model.Description</p>
+            <h5><b>Category:</b> @Model.CatName</h5>
+            <h5><b>Price:</b> @Model.ListingPrice</h5>
+            <h5><b>Price After Discount:</b> @Model.Discount</h5>
 
-<button><a href="@Url.Action("CardDetail", "Card", new { Name = Model.Name, ImageURL=Model.ImageURL})">Add To Cart</a></button>
-<select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
-    @foreach (var Variant in Model.Variants)
-    {
-            <option value=@Variant.image>@Variant.Variant_Property: @Variant.Variant_Value1</option>
-    }
-</select>
+            @*<h6><b>Price: &#8377;</b> @Model.ListingPrice</h6>
+        <h6><b>Discount Price: &#8377;</b> @Model.Discount</h6>*@
+            @*<h6><b>@(Model.Inventory - Model.QuantitySold)</b> left in stock.</h6>*@
+            @using (Html.BeginForm("CardDetail", "Card", new { Name = Model.Name, ImageURL = Model.ImageURL }, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
 
+                <!--<img src="Variant.image" height="100" width="100" />-->
+                <select onchange="$('#imageToSwap').attr('src', this.options[this.selectedIndex].value);">
+                    @foreach (var Variant in Model.Variants)
+                    {
+
+                        <option value=@Variant.image>@Variant.Variant_Property: @Variant.Variant_Value1</option>
+                        <!--<option value=Variant.ID>Variant.Variant_Property: Variant.Variant_Value2</option>-->
+                    }
+                </select>
+
+                <button class="btn btn-block btn-primary" type="submit">Add To Cart</button>
+            }
+        </div>
+    </div>
+</div>

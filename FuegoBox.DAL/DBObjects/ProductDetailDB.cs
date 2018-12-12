@@ -29,6 +29,7 @@ namespace FuegoBox.DAL.DBObjects
             {
                 ProductDetailDTO newBasicDTO = new ProductDetailDTO();            
                 newBasicDTO.Name = product.Name;
+                newBasicDTO.ID = product.ID;
                 newBasicDTO.Description = product.Description;
                 newBasicDTO.CatName = category.Name;
                 newBasicDTO.Variants = (from v in dbContext.Variant.Where(cdf => cdf.ProductID == product.ID)

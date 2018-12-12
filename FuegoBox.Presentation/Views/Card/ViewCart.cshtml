@@ -1,16 +1,35 @@
-﻿
+﻿@model FuegoBox.Presentation.Models.ViewCartModel
+
 @{
     ViewBag.Title = "ViewCart";
 }
+<h1>details of cart</h1>
 
 @foreach (var product in Model.CartProduct)
-{
-    <h2>ProductPrice: @product.SellingPrice </h2>
-    <h2>Variant_ID: @product.Variant_ID </h2>
-    <h3>Name: @product.Name</h3>
-    <img src="@product.Url" width="100px" height=" 100px" />
-    <a href="@Url.Action("RemoveItem", "Card", new { VariantID = product.Variant_ID })">Remove Item</a>
-}
-    <h2>Value of TotaL: @Model.Total</h2>
+{<div class="row">
+        <div class="col-md-12">
+            <div class="card card-style" style="margin-bottom:10px">
+                <div class="card-header">
+                    <button type="button" class="close" aria-label="Close" onclick="location.href='@Url.Action("RemoveItem", "Card", new { VariantID = product.Variant_ID })'">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="@product.Url" height="150" width="150" />
+                        </div>
+                        <div class="col-md-4 offset-1">
+                            <h2>Variant_ID: @product.Variant_ID </h2>
+                            <h2>Selling Price:@product.SellingPrice</h2>
+                            <h2>Name:@product.Name</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 
-<button type="button" onclick="location.href='@Url.Action("CheckOut", "Order")'"> Check Out </button>
+    <h2>Subtotal:@Model.Total</h2>
+}

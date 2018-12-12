@@ -1,24 +1,92 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿
+.spacing {
+    margin-right: 10px;
 }
 
-/* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
 
+body {
+    padding-top: 60px;
+}
+
+@media (max-width: 979px) {
+    body {
+        padding-top: 0px;
+    }
+}
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
-.dl-horizontal dt {
-    white-space: normal;
-}
+
+
 
 /* Set width on the form input elements since they're 100% wide by default */
+
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+#fuego {
+    margin-left: 20px;
+    margin-right: 20px;
+    font-weight: 800;
+    /*color: #E9967A;*/
+    position: relative;
+    text-transform: capitalize;
+    color: #616161;
+    font-size: 30px;
+}
+
+.anchor a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.center-element {
+    text-align: center;
+}
+
+.p-detail {
+    margin: 20px;
+    padding: 10px;
+}
+
+.card-style h2 {
+    line-height: 1.5;
+    color: #000;
+    font-weight: 400;
+    font-family: "Rokkitt", Georgia, serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.nav-style {
+    padding: 10px 12px;
+    color: black;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 15px;
+    font-family: "Rokkitt", Georgia, serif;
+    font-weight: 400;
+}
+
+.anchor a:hover {
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+}
+
+.title {
+    font-size: 20px;
+    text-transform: uppercase;
+}
+
+#fuego a {
+    color: inherit;
+    text-decoration: none;
 }
