@@ -41,13 +41,13 @@ namespace FuegoBox.Presentation.Controllers
         }
 
         [UserAuthenticationFilter]
-        public ActionResult CardDetail([Bind(Include = "Name, ImageURL")]ProductDetail productDetail)
+        public ActionResult CardDetail(string Id)
         {
-            ProductDetailDTO productDetailDTO = productmapper.Map<ProductDetail, ProductDetailDTO>(productDetail);
-           
+            // ProductDetailDTO productDetailDTO = new ProductDetailDTO(); 
+            Guid ID = Guid.Parse(Id);
             Guid user_id = new Guid(Session["UserID"].ToString());
            
-               bool result = productDetailContext.productAddToCart(productDetailDTO, user_id);
+               bool result = productDetailContext.productAddToCart(ID, user_id);
             // 
             if (result == true)
             {

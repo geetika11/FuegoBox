@@ -40,6 +40,7 @@ namespace FuegoBox.DAL.DBObjects
                                         join value in dbContext.Value on vpv.ValueID equals value.ID
                                         select new VariantDTO()
                                         {
+                                            VariantId = v.ID,
                                             ListingPrice=v.ListingPrice,
                                             Discount=v.Discount,
                                             Variant_Property=p.Name,
@@ -69,21 +70,56 @@ namespace FuegoBox.DAL.DBObjects
         }
 
         //adding product to the cart using the loggedin user's userID
-        public bool AddProduct( ProductDetailDTO pdto,Guid user_id)
+        public bool AddProduct( Guid id,Guid user_id)
         {
-            Product product = dbContext.Product.Where(a => a.Name == pdto.Name).FirstOrDefault();
-            dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-            Variant variant = dbContext.Variant.Where(s => s.ProductID == product.ID).FirstOrDefault();
-            ProductDetailDTO cartdto = new ProductDetailDTO();
-            IEnumerable<Cart> ca=dbContext.Cart.Where(pd=>pd.UserID==user_id);
-            foreach(var cd in ca)
+            Product product = dbContext.Product.Where(a => a.ID == id).FirstOrDefault();
+            if (product==null)
             {
-                if (cd.VariantID == variant.ID)
+                dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+                Variant variant = dbContext.Variant.Where(s => s.ID == id).FirstOrDefault();
+
+                Guid p_id = variant.ProductID;
+                Product pr = dbContext.Product.Where(cdd => cdd.ID == p_id).FirstOrDefault();
+                VariantImage vimage = dbContext.VariantImage.Where(cdd => cdd.VariantID == variant.ID).FirstOrDefault();
+                ProductDetailDTO cartdto = new ProductDetailDTO();
+                IEnumerable<Cart> ca = dbContext.Cart.Where(pd => pd.UserID == user_id);
+                foreach (var cd in ca)
                 {
-                    return false;
+                    if (cd.VariantID == variant.ID)
+                    {
+                        return false;
+                    }
                 }
+
+                Cart cart = new Cart();
+                cart.ID = Guid.NewGuid();
+                cart.VariantID = variant.ID;
+                cart.SellingPrice = variant.Discount;
+                cart.Qty = 2;
+                cart.UserID = user_id;
+                cartdto.Name = pr.Name;
+                cartdto.ImageURL = vimage.ImageURL;
+                dbContext.Cart.Add(cart);
+                dbContext.SaveChanges();
+                return true;
+
+
             }
-           
+            else
+            {
+                dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
+                Variant variant = dbContext.Variant.Where(s => s.ProductID == id).FirstOrDefault();
+                //Guid p_id = variant.ProductID;               
+                VariantImage vimage = dbContext.VariantImage.Where(cdd => cdd.VariantID == variant.ID).FirstOrDefault();
+                ProductDetailDTO cartdto = new ProductDetailDTO();
+                IEnumerable<Cart> ca = dbContext.Cart.Where(pd => pd.UserID == user_id);
+                foreach (var cd in ca)
+                {
+                    if (cd.VariantID == variant.ID)
+                    {
+                        return false;
+                    }
+                }
                 Cart cart = new Cart();
                 cart.ID = Guid.NewGuid();
                 cart.VariantID = variant.ID;
@@ -91,14 +127,11 @@ namespace FuegoBox.DAL.DBObjects
                 cart.Qty = 2;
                 cart.UserID = user_id;
                 cartdto.Name = product.Name;
-                cartdto.ImageURL = pdto.ImageURL;
+                cartdto.ImageURL = vimage.ImageURL;
                 dbContext.Cart.Add(cart);
                 dbContext.SaveChanges();
-            //return cartdto;
-            return true;
-           
-            
-                  
+                return true;               
+            } 
         }
 
 

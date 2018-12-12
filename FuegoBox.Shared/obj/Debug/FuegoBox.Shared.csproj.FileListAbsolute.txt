@@ -31,3 +31,4 @@ C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csproj.CopyComplete
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.dll
 C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.pdb
+C:\Users\geetikavarshney\Downloads\FuegoBox-master (1)\FuegoBox-master\FuegoBox.Shared\obj\Debug\FuegoBox.Shared.csprojAssemblyReference.cache

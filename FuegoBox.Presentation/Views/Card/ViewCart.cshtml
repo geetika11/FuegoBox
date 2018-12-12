@@ -6,7 +6,8 @@
 <h1>details of cart</h1>
 
 @foreach (var product in Model.CartProduct)
-{<div class="row">
+{
+    <div class="row">
         <div class="col-md-12">
             <div class="card card-style" style="margin-bottom:10px">
                 <div class="card-header">
@@ -32,4 +33,5 @@
     }
 
     <h2>Subtotal:@Model.Total</h2>
-}
+
+    <a class="btn btn-primary" href="@Url.Action("Checkout","Order")">Checkout</a>

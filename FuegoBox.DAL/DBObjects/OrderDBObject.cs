@@ -58,13 +58,8 @@ namespace FuegoBox.DAL.DBObjects
                 var ac = from d in dbContext.Variant.Where(cd => cd.ID == abc.Variant_ID)
                          join p in dbContext.Product on d.ProductID equals p.ID
                          join c in dbContext.Category on p.CategoryID equals c.ID
-                         select d.ID;
-                foreach (var i in ac)
-                {
-
-
-                    cat.ProductsSold = cat.ProductsSold + 1;
-                }
+                         select c.ProductsSold;
+               
             }
 
             var ab = cat.ProductsSold;

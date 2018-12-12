@@ -40,9 +40,9 @@ namespace FuegoBox.Business.BusinessObjects
         }
 
         //add product to the cart
-        public bool productAddToCart(ProductDetailDTO productDetailDTO,Guid user_id)
+        public bool productAddToCart(Guid id,Guid user_id)
         {
-            bool cDTO = ProductDBObject.AddProduct(productDetailDTO,user_id);
+            bool cDTO = ProductDBObject.AddProduct(id,user_id);
             return cDTO;
         }
 

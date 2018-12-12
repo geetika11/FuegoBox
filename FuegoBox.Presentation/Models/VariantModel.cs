@@ -7,6 +7,7 @@ namespace FuegoBox.Presentation.Models
 {
     public class VariantModel
     {
+        public Guid VariantId { get; set; }
         public double ListingPrice { get; set; }
         public double Discount { get; set; }
         public ProductDetail Product;
