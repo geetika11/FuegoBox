@@ -52,6 +52,22 @@ namespace FuegoBox.DAL.DBObjects
             Order order = new Order();
             dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             order.ID = Guid.NewGuid();
+            Category cat = new Category();
+            foreach (var abc in vcdto.CartProduct)
+            {
+                var ac = from d in dbContext.Variant.Where(cd => cd.ID == abc.Variant_ID)
+                         join p in dbContext.Product on d.ProductID equals p.ID
+                         join c in dbContext.Category on p.CategoryID equals c.ID
+                         select d.ID;
+                foreach (var i in ac)
+                {
+
+
+                    cat.ProductsSold = cat.ProductsSold + 1;
+                }
+            }
+
+            var ab = cat.ProductsSold;
             order.DeliveryAddressID = addressid;
             order.TotalAmount = vcdto.Total;
             order.UserID = userid;
