@@ -13,11 +13,11 @@ namespace FuegoBox.Business.BusinessObjects
 {
     public class CategoryDetailContext
     {
-        CategoryProductDB catDBObject;
+        CategoryProductDB categoryDBObject;
 
         public CategoryDetailContext()
         {
-            catDBObject = new CategoryProductDB();
+            categoryDBObject = new CategoryProductDB();
         }
         
         //display all the product from the particular category...
@@ -25,20 +25,20 @@ namespace FuegoBox.Business.BusinessObjects
         {
             try
             {
-                bool exists = catDBObject.CategoryExists(catName);
+                bool exists = categoryDBObject.CategoryExists(catName);
             }
             catch(NotFoundException ex)
             {
                 throw new CategoryDoesNotExists();
             }
-            CategoryDTO catproductDTO = catDBObject.Getproduct(catName);
+            CategoryDTO catproductDTO = categoryDBObject.Getproduct(catName);
             return catproductDTO;
         }
 
         //display product to the home page....
         public CategoryDTO GetCategoryOnHomePage()
         {
-            CategoryDTO cdto = catDBObject.GetCategoryonHomePage();
+            CategoryDTO cdto = categoryDBObject.GetCategoryonHomePage();
             return cdto;
         }
     }

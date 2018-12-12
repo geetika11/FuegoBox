@@ -45,6 +45,7 @@ namespace FuegoBox.DAL.DBObjects
             return;
         }
 
+
         //function to remove the item from the cart according to the logged in user and variant id...
         public void RemoveItem(Guid UserID, Guid VariantID)
         {

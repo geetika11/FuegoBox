@@ -95,7 +95,7 @@ namespace FuegoBox.DAL.DBObjects
                 cart.ID = Guid.NewGuid();
                 cart.VariantID = variant.ID;
                 cart.SellingPrice = variant.Discount;
-                cart.Qty = 2;
+                cart.Qty = 1;
                 cart.UserID = user_id;
                 cartdto.Name = pr.Name;
                 cartdto.ImageURL = vimage.ImageURL;

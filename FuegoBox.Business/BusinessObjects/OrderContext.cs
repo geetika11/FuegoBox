@@ -12,18 +12,18 @@ namespace FuegoBox.Business.BusinessObjects
     public class OrderContext
     {
         OrderDBObject orderDBObject;
-        CartDatabaseObject cdo;
+        CartDatabaseObject cartdatabaseobject;
 
         public OrderContext()
         {
             orderDBObject = new OrderDBObject();
-            cdo = new CartDatabaseObject();
+            cartdatabaseobject = new CartDatabaseObject();
         }
 
         public bool AddAddress(AddressDTO od, Guid userid)
         {
             Guid addressid = orderDBObject.AddAddress(od, userid);
-            ViewCartDTO vdto = cdo.viewCart(userid);
+            ViewCartDTO vdto = cartdatabaseobject.viewCart(userid);
             CartDetailContext cdc = new CartDetailContext();
             double result = new double();
             foreach (var i in vdto.CartProduct)
@@ -32,7 +32,8 @@ namespace FuegoBox.Business.BusinessObjects
 
             }
             vdto.Total = result;
-            orderDBObject.PlaceOrder(userid, vdto, addressid);            
+            orderDBObject.PlaceOrder(userid, vdto, addressid);
+            cartdatabaseobject.EmptyCart(userid);
             return true;
         }
 

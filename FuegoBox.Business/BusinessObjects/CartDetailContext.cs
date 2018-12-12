@@ -10,32 +10,34 @@ namespace FuegoBox.Business.BusinessObjects
 {
   public  class CartDetailContext
     {
-        CartDatabaseObject cdo = new CartDatabaseObject();
+        CartDatabaseObject cartdatabaseobject = new CartDatabaseObject();
 
         //function to view the cart according to the user...
         public ViewCartDTO viewCart(Guid userId)
         {
-            ViewCartDTO vdto = cdo.viewCart(userId);
+            ViewCartDTO viewcartdto = cartdatabaseobject.viewCart(userId);
             double result = new double();
-            foreach (var i in vdto.CartProduct)
+            foreach (var i in viewcartdto.CartProduct)
             {
                 result = result + i.SellingPrice;
 
             }
-            vdto.Total = result;
-            return vdto;
+            viewcartdto.Total = result;
+            return viewcartdto;
         }
 
+
+        //function to remove the cart items.
         public bool EmptyCart(Guid UserID)
         {
-            cdo.EmptyCart(UserID);
+            cartdatabaseobject.EmptyCart(UserID);
             return true;
         }
 
         //function to remove the item from the cart....
         public void RemoveItem(Guid UserID, Guid VariantID)
         {
-            cdo.RemoveItem(UserID, VariantID);
+            cartdatabaseobject.RemoveItem(UserID, VariantID);
         }
     }
 }

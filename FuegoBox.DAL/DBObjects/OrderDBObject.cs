@@ -13,9 +13,11 @@ namespace FuegoBox.DAL.DBObjects
     {
         FuegoEntities dbContext;
 
+        CategoryProductDB categorydb = new CategoryProductDB();
         IMapper orderMapper, orderdtoMapper;
         public OrderDBObject()
         {
+           
             dbContext = new FuegoEntities();
             var config = new MapperConfiguration(cfg =>
             {
@@ -49,51 +51,71 @@ namespace FuegoBox.DAL.DBObjects
 
         public void PlaceOrder(Guid userid, ViewCartDTO vcdto, Guid addressid)
         {
+
             Order order = new Order();
+          
+                
             dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             order.ID = Guid.NewGuid();
-            Category cat = new Category();
-            foreach (var abc in vcdto.CartProduct)
-            {
-                var ac = from d in dbContext.Variant.Where(cd => cd.ID == abc.Variant_ID)
-                         join p in dbContext.Product on d.ProductID equals p.ID
-                         join c in dbContext.Category on p.CategoryID equals c.ID
-                         select c.ProductsSold;
-               
-            }
 
-            var ab = cat.ProductsSold;
+            categorydb.update(vcdto);
+           
+           // var ab = cat.ProductsSold;
             order.DeliveryAddressID = addressid;
             order.TotalAmount = vcdto.Total;
             order.UserID = userid;
             order.OrderDate = DateTime.Now;
             order.DeliveryDate = DateTime.Now.AddDays(2);
             order.isCancelled = "N";
+           
             dbContext.Order.Add(order);
+           
             dbContext.SaveChanges();
+            categorydb.addOrderProduct(order, vcdto);
 
 
         }
+
+
+       
 
         public ViewOrderDTO ViewOrder(Guid userid)
         {
 
             ViewOrderDTO viewcdto = new ViewOrderDTO();
             dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-            viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd => cdd.UserID == userid)    
-                                   join cart in dbContext.Cart on or.UserID equals cart.UserID
-                                   join vari in dbContext.Variant on cart.VariantID equals vari.ID
-                                   join img in dbContext.VariantImage on vari.ID equals img.VariantID
-                                   join p in dbContext.Product on vari.ProductID equals p.ID
-                                   select new OrderItemsDTO()
-                                   {    
-                                       OrderDate=or.OrderDate,  
-                                       Name=p.Name,
-                                       Price=vari.Discount,
-                                       Url=img.ImageURL
+            //viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd => cdd.UserID == userid)    
+            //                       join cart in dbContext.Cart on or.UserID equals cart.UserID
+            //                       join vari in dbContext.Variant on cart.VariantID equals vari.ID
+            //                       join img in dbContext.VariantImage on vari.ID equals img.VariantID
+            //                       join p in dbContext.Product on vari.ProductID equals p.ID
+            //                       select new OrderItemsDTO()
+            //                       {    
+            //                           OrderDate=or.OrderDate,  
+            //                           Name=p.Name,
+            //                           Price=vari.Discount,
+            //                           Url=img.ImageURL
 
-                                   });
-          
+            //                       });
+
+           
+
+            viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd=>cdd.UserID==userid) 
+                                   join op in dbContext.OrderProduct on or.ID equals op.OrderID
+                                   join vari in dbContext.Variant on op.VariantID equals vari.ID
+                                   join p in dbContext.Product on vari.ProductID equals p.ID
+                                   join img in dbContext.VariantImage on vari.ID equals img.VariantID
+
+                                   select new OrderItemsDTO()
+                                   {
+                                       Price=vari.Discount,
+                                       OrderDate=or.OrderDate,
+                                       Name=p.Name,
+                                       Url = img.ImageURL
+
+
+
+                                   }).ToList();
             return viewcdto;
         }
 

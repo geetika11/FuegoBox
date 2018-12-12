@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FuegoBox.DAL.Exceptions;
+using FuegoBox.Shared.DTO.Cart;
 using FuegoBox.Shared.DTO.Category;
 using FuegoBox.Shared.DTO.Product;
 using System;
@@ -45,45 +46,45 @@ namespace FuegoBox.DAL.DBObjects
         //displaying top 3 selling products from 3 top selling categories
         public CategoryDTO GetCategoryonHomePage()
         {
-            CategoryDTO cd = new CategoryDTO();
+            CategoryDTO categorydto = new CategoryDTO();
             var i = 1;
             dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
             List<List<ProductDetailDTO>> productlist1 = new List<List<ProductDetailDTO>>();
             var categories = dbContext.Category.Include(abc => abc.Product).OrderByDescending(cdd => cdd.ProductsSold).ToList();
-            foreach (Category cato in categories)
+            foreach (Category category in categories)
             {
                 if (i <= 3)
                 {
-                    cd.Products = (from pi in dbContext.Product
-                                   where pi.CategoryID == cato.ID
+                    categorydto.Products = (from pi in dbContext.Product
+                                   where pi.CategoryID == category.ID
                                    join v in dbContext.Variant on pi.ID equals v.ProductID
                                    join img in dbContext.VariantImage on v.ID equals img.VariantID
                                    orderby v.QuantitySold descending
                                    select new ProductDetailDTO()
                                    {
                                        Name = pi.Name,
-                                       CatName = cato.Name,
+                                       CatName = category.Name,
                                        ListingPrice = v.ListingPrice,
                                        Discount = v.Discount,
                                        ImageURL = img.ImageURL
                                    }).ToList().Take(3);
-                    productlist1.Add(cd.Products.ToList());
+                    productlist1.Add(categorydto.Products.ToList());
                 }
                 else
                 {
-                    cd.Products = (from pi in dbContext.Product
-                                   where pi.CategoryID == cato.ID
+                    categorydto.Products = (from pi in dbContext.Product
+                                   where pi.CategoryID == category.ID
                                    join v in dbContext.Variant on pi.ID equals v.ProductID
                                    join img in dbContext.VariantImage on v.ID equals img.VariantID
                                    select new ProductDetailDTO()
                                    {
                                        Name = pi.Name,
-                                       CatName = cato.Name,
+                                       CatName = category.Name,
                                        ListingPrice = v.ListingPrice,
                                        Discount = v.Discount,
                                        ImageURL = img.ImageURL
                                    }).ToList().Take(5);
-                    productlist1.Add(cd.Products.ToList());
+                    productlist1.Add(categorydto.Products.ToList());
                 }
                 i++;
             }
@@ -95,8 +96,8 @@ namespace FuegoBox.DAL.DBObjects
                     productList2.Add(iter2);
                 }
             }
-            cd.Products = productList2;
-            return cd;
+            categorydto.Products = productList2;
+            return categorydto;
         }
 
         //to check whether the category exists or not..
@@ -111,5 +112,43 @@ namespace FuegoBox.DAL.DBObjects
             return true;
         }
 
+        public void update(ViewCartDTO vcdto)
+        {
+           foreach (var iter in vcdto.CartProduct)
+            {
+               
+                dbContext.Variant.SingleOrDefault(cad => cad.ID == iter.Variant_ID).QuantitySold += 1;
+               
+                Variant vd = dbContext.Variant.Where(abc1 => abc1.ID == iter.Variant_ID).First();
+                Product pd = dbContext.Product.Where(ds => ds.ID == vd.ProductID).FirstOrDefault();
+                Category cat1 = dbContext.Category.Where(re => re.ID == pd.CategoryID).FirstOrDefault();
+                dbContext.Category.SingleOrDefault(c => c.ID == cat1.ID).ProductsSold += 1;
+                dbContext.SaveChanges();
+
+
+
+            }
+
+           
+           
+
+        }
+
+        public void addOrderProduct(Order order,ViewCartDTO vcdto)
+        {
+
+            foreach (var cartItem in vcdto.CartProduct)
+            {
+                OrderProduct op = new OrderProduct();
+                op.VariantID = cartItem.Variant_ID;
+                op.SellingPrice = cartItem.SellingPrice;
+                op.OrderID = order.ID;
+                op.ID = Guid.NewGuid();
+                
+                op.Qty = 1;
+                dbContext.OrderProduct.Add(op);
+                dbContext.SaveChanges();
+            }
+        }
     }
 }
