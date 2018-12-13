@@ -77,46 +77,57 @@ namespace FuegoBox.DAL.DBObjects
         }
 
 
-       
 
-        public ViewOrderDTO ViewOrder(Guid userid)
+
+        public ViewOrderDTO ViewOrder(Guid orderID)
         {
-
             ViewOrderDTO viewcdto = new ViewOrderDTO();
             dbContext.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-            //viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd => cdd.UserID == userid)    
-            //                       join cart in dbContext.Cart on or.UserID equals cart.UserID
-            //                       join vari in dbContext.Variant on cart.VariantID equals vari.ID
-            //                       join img in dbContext.VariantImage on vari.ID equals img.VariantID
-            //                       join p in dbContext.Product on vari.ProductID equals p.ID
-            //                       select new OrderItemsDTO()
-            //                       {    
-            //                           OrderDate=or.OrderDate,  
-            //                           Name=p.Name,
-            //                           Price=vari.Discount,
-            //                           Url=img.ImageURL
-
-            //                       });
-
-           
-
-            viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd=>cdd.UserID==userid) 
+            viewcdto.OrderItems = (from or in dbContext.Order.Where(cdd => cdd.ID == orderID)
                                    join op in dbContext.OrderProduct on or.ID equals op.OrderID
                                    join vari in dbContext.Variant on op.VariantID equals vari.ID
                                    join p in dbContext.Product on vari.ProductID equals p.ID
                                    join img in dbContext.VariantImage on vari.ID equals img.VariantID
+                                   orderby or.OrderDate descending
 
                                    select new OrderItemsDTO()
                                    {
-                                       Price=vari.Discount,
-                                       OrderDate=or.OrderDate,
-                                       Name=p.Name,
-                                       Url = img.ImageURL
-
-
-
+                                       Price = vari.Discount,
+                                       Url = img.ImageURL,
+                                       OrderDate = or.OrderDate,
+                                       Name = p.Name
                                    }).ToList();
+
             return viewcdto;
+        }
+
+        public OrdersDTO GetOrders(Guid user_Id)
+        {
+            OrdersDTO ordersDTO = new OrdersDTO();
+            ordersDTO.orders = (from oc in dbContext.Order
+                                where oc.UserID == user_Id
+                                select new OrderDTO()
+                                {
+                                    TotalAmount = oc.TotalAmount,
+                                    OrderDate = oc.OrderDate,
+                                    DeliveryDate = oc.DeliveryDate,
+                                    ID = oc.ID
+
+                                }).ToList();
+            foreach (var i in ordersDTO.orders)
+            {
+                if (i.DeliveryDate <= i.OrderDate)
+                {
+                    i.status = "Delivered";
+                }
+                else
+                {
+                    i.status = "Not Delivered";
+                }
+            }
+
+            return ordersDTO;
+
         }
 
     }
